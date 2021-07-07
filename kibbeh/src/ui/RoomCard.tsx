@@ -4,8 +4,9 @@ import { SolidTime } from "../icons";
 import { BubbleText } from "./BubbleText";
 import { RoomCardHeading } from "./RoomCardHeading";
 import { Tag } from "./Tag";
+import { MultipleUsers, SingleUser } from "./UserAvatar";
 
-function formatNumber(num: number): string {
+export function formatNumber(num: number): string {
   return Math.abs(num) > 999
     ? `${Math.sign(num) * Number((Math.abs(num) / 1000).toFixed(1))}K`
     : `${Math.sign(num) * Math.abs(num)}`;
@@ -38,6 +39,7 @@ function useScheduleRerender(scheduledFor?: Date) {
 export type RoomCardProps = {
   title: string;
   subtitle: string;
+  avatars: string[];
   scheduledFor?: Date;
   listeners: number;
   tags: React.ReactNode[];
@@ -47,6 +49,7 @@ export type RoomCardProps = {
 export const RoomCard: React.FC<RoomCardProps> = ({
   title,
   subtitle,
+  avatars,
   scheduledFor,
   listeners,
   tags,
@@ -68,24 +71,30 @@ export const RoomCard: React.FC<RoomCardProps> = ({
 
   return (
     <button
+      data-testid={`room-card:${title}`}
       onClick={onClick}
-      className="p-4 w-full bg-primary-800 hover:bg-primary-800 rounded-lg flex flex-col"
+      className="flex flex-col w-full p-4 rounded-lg transition duration-200 ease-in-out bg-primary-800 hover:bg-primary-700"
     >
-      <div className="w-full flex justify-between space-x-4">
+      <div className="flex justify-between w-full space-x-4">
         <RoomCardHeading
           icon={roomLive ? undefined : <SolidTime />}
           text={title}
         />
-        <div className="flex-shrink-0">
+        <div className="flex flex-shrink-0">
           <BubbleText live={roomLive}>
             {roomLive ? formatNumber(listeners) : scheduledForLabel}
           </BubbleText>
         </div>
       </div>
-      <div className="text-primary-300 mt-2 break-words block text-left">
-        {subtitle}
+      <div className="w-full mt-2 flex">
+        {avatars.length > 0 ? (
+          <MultipleUsers className="mr-2" srcArray={avatars} />
+        ) : null}
+        <div className="text-left break-all truncate whitespace-pre-wrap line-clamp-2 text-primary-300">
+          {subtitle}
+        </div>
       </div>
-      <div className="space-x-2 mt-4">
+      <div className="flex mt-4 space-x-2">
         {tags.map((tag, idx) => (
           <Tag key={idx}>{tag}</Tag>
         ))}

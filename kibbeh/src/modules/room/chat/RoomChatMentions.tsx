@@ -1,5 +1,6 @@
 import { BaseUser, RoomUser } from "@dogehouse/kebab";
 import React, { useEffect } from "react";
+import { mentionRegex } from "../../../lib/constants";
 import { useConn } from "../../../shared-hooks/useConn";
 import { SingleUser } from "../../../ui/UserAvatar";
 import { useRoomChatMentionStore } from "./useRoomChatMentionStore";
@@ -21,12 +22,9 @@ export const RoomChatMentions: React.FC<RoomChatMentionsProps> = ({
     setActiveUsername,
     queriedUsernames,
     setQueriedUsernames,
-    mentions,
-    setMentions,
   } = useRoomChatMentionStore();
 
   function addMention(m: BaseUser) {
-    setMentions([...mentions, m]);
     setMessage(
       message.substring(0, message.lastIndexOf("@") + 1) + m.username + " "
     );
@@ -38,7 +36,7 @@ export const RoomChatMentions: React.FC<RoomChatMentionsProps> = ({
 
   useEffect(() => {
     // regex to match mention patterns
-    const mentionMatches = message.match(/^(?!.*\bRT\b)(?:.+\s)?#?@\w+/i);
+    const mentionMatches = message.match(mentionRegex);
 
     // query usernames for matched patterns
     if (mentionMatches && me) {
@@ -53,7 +51,6 @@ export const RoomChatMentions: React.FC<RoomChatMentionsProps> = ({
           ({ id, username, displayName }) =>
             (username?.toLowerCase().includes(useMention?.toLowerCase()) ||
               displayName?.toLowerCase().includes(useMention?.toLowerCase())) &&
-            !mentions.find((m: BaseUser) => m.id === id) &&
             me.id !== id
         );
 
@@ -66,33 +63,25 @@ export const RoomChatMentions: React.FC<RoomChatMentionsProps> = ({
       setQueriedUsernames([]);
     }
 
-    // Remove mention if user deleted text
-    setMentions(
-      mentions.filter((u) => {
-        return message.toLowerCase().indexOf(u.username?.toLowerCase()) !== -1;
-      })
-    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [message]);
 
   if (queriedUsernames.length) {
     return (
-      <div className={`flex flex-col pb-1 bg-simple-gray-26`}>
+      <div className={`flex flex-col pb-1 bg-primary-800`}>
         {queriedUsernames.map((m) => (
           <button
-            className={`flex py-3 items-center px-8 focus:outline-none ${
-              activeUsername === m.id ? "bg-blue-800" : ""
+            className={`flex py-3 items-center px-6 justify-start focus:outline-none truncate ${
+              activeUsername === m.id ? "bg-primary-700" : ""
             }`}
             key={m.id}
             onClick={() => addMention(m)}
           >
-            <span className={`pr-3 inline`}>
-              <SingleUser size="xs" src={m.avatarUrl} />
-            </span>
-            <p className={`m-0 mt-1`}>
+            <SingleUser size="xs" src={m.avatarUrl} />
+            <div className={`pl-3 m-0 text-primary-200 truncate`}>
               {m.displayName}
-              {m.displayName !== m.username ? `(${m.username})` : null}
-            </p>
+              {m.displayName !== m.username ? ` (${m.username})` : null}
+            </div>
           </button>
         ))}
       </div>

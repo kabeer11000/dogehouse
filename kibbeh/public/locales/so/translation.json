@@ -1,0 +1,398 @@
+{
+  "_comment": "if you change this file, do: yarn i18",
+  "common": {
+    "loadMore": "load more",
+    "loading": "loading...",
+    "noUsersFound": "lama helin isticmaaleyaal",
+    "ok": "hagaag",
+    "yes": "haa",
+    "no": "maya",
+    "cancel": "baaji",
+    "save": "kaydi",
+    "edit": "wax ka beddel",
+    "delete": "tirtir",
+    "joinRoom": "qolka ku biir",
+    "copyLink": "naqli xiriiriyaha",
+    "copied": "naqlay",
+    "formattedIntlDate": "{{date, intlDate}}",
+    "formattedIntlTime": "{{time, intlTime}}",
+    "requestPermissions": "Please note running DogeHouse without accessibility permissions may cause unwanted errors",
+    "copy": "Copy",
+    "error": "Error"
+  },
+  "header": {
+    "_comment": "Main Header UI Internationalization Strings",
+    "title": "DogeHouse",
+    "mutedTitle": "Muted | DogeHouse",
+    "deafenedTitle": "Deafened | DogeHouse",
+    "dashboard": "Dashboard",
+    "connectionTaken": "Connection Taken"
+  },
+  "footer": {
+    "_comment": "Main Footer UI Internationalization Strings",
+    "link_1": "Asalka Sheekada",
+    "link_2": "Discord",
+    "link_3": "Soo gudbi cillad"
+  },
+  "pages": {
+    "_comment": "Respective Page UI Internationalization Strings",
+    "admin": {
+      "ban": "mamnuuc",
+      "userStaffandContrib": "User Staff & Contributions",
+      "staff": "Staff: ",
+      "contributions": "Contributions",
+      "username": "Username",
+      "usrStaff": "User Staff",
+      "usrContributions": "User Contributions",
+      "reason": "reason",
+      "usernamePlaceholder": "username to perform actions on"
+    },
+    "followingOnlineList": {
+      "listHeader": "Liiska isticmaaleyaasha aan ku jirin qol gaar ah oo aad raacday.",
+      "currentRoom": "hadda ku jira:",
+      "startPrivateRoom": "qol gaar ah la bilow",
+      "title": "People"
+    },
+    "followList": {
+      "followHim": "follow",
+      "followingHim": "following",
+      "title": "People",
+      "followingNone": "Not following anyone",
+      "noFollowers": "No followers"
+    },
+    "home": {
+      "createRoom": "Abuur qol",
+      "refresh": "Cusbooneysii",
+      "editRoom": "Waxka bedel qolka",
+      "desktopAlert": "Dajiso desktop appka DogeHouse maanta?!"
+    },
+    "inviteList": {
+      "roomGone": "Qolka wuu dhamaday, dib u noqo",
+      "shareRoomLink": "Lawadaag xiriiriyaha qolkan",
+      "inviteFollowers": "Waad ku martiqaadi kartaa kuwa ku raacsan ee ku jira khadka:",
+      "whenFollowersOnline": "Markay kuwa ku raacsan ku jiraan khadka, halkan ayey kasoo muuqadaan."
+    },
+    "login": {
+      "headerText": "Taking voice conversations to the moon 🚀",
+      "featureText_1": "Dark Theme",
+      "featureText_2": "Open Sign-Ups",
+      "featureText_3": "Cross-Platform Support",
+      "featureText_4": "Open Source",
+      "featureText_5": "Text Chat",
+      "featureText_6": "Powered by Doge",
+      "loginGithub": "ku gal GitHub",
+      "loginTwitter": "ku gal Twitter",
+      "createTestUser": "Samee koonto tijaabo ah",
+      "loginDiscord": "Login with Discord"
+    },
+    "myProfile": {
+      "logout": "ka bax",
+      "probablyLoading": "probably loading...",
+      "voiceSettings": "tag goobta cod hagaajinta",
+      "overlaySettings": "go to overlay settings",
+      "soundSettings": "tag goobta dhawaq hagaajinta",
+      "deleteAccount": "tirtir koontada",
+      "couldNotFindUser": "Sorry, we could not find that user",
+      "privacySettings": "Privacy settings"
+    },
+    "notFound": {
+      "whoopsError": "Whoops! This page got lost in conversation.",
+      "goHomeMessage": "Ha walwalin. Waad awoodaa",
+      "goHomeLinkText": "go home"
+    },
+    "room": {
+      "speakers": "Hadleyaal",
+      "requestingToSpeak": "Requesting to speak",
+      "listeners": "Dhageystayaal",
+      "allowAll": "Dhammaan oggolow",
+      "allowAllConfirm": "Ma hubtaa? Tani waxay u oggolaan doontaa dhammaan {{count}} Isticmaalayaasha inay codsadaan inay hadlaan"
+    },
+    "searchUser": { "search": "raadi..." },
+    "soundEffectSettings": {
+      "header": "Codka",
+      "title": "Sound Settings",
+      "playSound": "Play Sound"
+    },
+    "viewUser": {
+      "editProfile": "wax ka beddel koontada",
+      "followsYou": "adiga kuraacay",
+      "followers": "raacsan",
+      "following": "raacay",
+      "followHim": "raac",
+      "followingHim": "following",
+      "copyProfileUrl": "naqli xiriiriyaha kontada",
+      "urlCopied": "URL copied to clipboard",
+      "unfollow": "Unfollow",
+      "about": "About",
+      "bot": "Bot",
+      "profileTabs": {
+        "about": "About",
+        "rooms": "Rooms",
+        "scheduled": "Scheduled",
+        "recorded": "Recorded",
+        "clips": "Clips",
+        "admin": "Admin"
+      },
+      "block": "Block",
+      "unblock": "Unblock",
+      "sendDM": "Send DM",
+      "aboutSuffix": "",
+      "errors": {
+        "blocked": "This user has blocked you.",
+        "default": "Whoops! We couldn't load this user."
+      }
+    },
+    "voiceSettings": {
+      "header": "hagaajinta codka",
+      "mic": "codbaahiye:",
+      "permissionError": "Codbaahiye lama helin, kuugu ma xirno codbaahiye ama ogolasho umaaad siin websitka codbaahin.",
+      "refresh": "Cusbooneysii liiska cod baahiyeyaasha",
+      "volume": "volume:",
+      "title": "Voice Settings"
+    },
+    "overlaySettings": {
+      "header": "Overlay Settings",
+      "input": {
+        "errorMsg": "Please enter valid app title",
+        "label": "Enter app title"
+      }
+    },
+    "download": {
+      "starting": "Starting download...",
+      "failed": "Could not auto-download, please try again later",
+      "visit_gh": "Visit Github Releases",
+      "prompt": "Click on the button below to start download",
+      "download_now": "Download Now",
+      "download_for": "Download for %platform% (%ext%)"
+    },
+    "privacySettings": {
+      "title": "Privacy Settings",
+      "header": "Privacy Settings",
+      "whispers": { "label": "Whispers", "on": "On", "off": "Off" }
+    },
+    "botEdit": {
+      "yourBots": "Your Bots",
+      "bots": "Bots",
+      "title": "Bot Information",
+      "apiKey": "ApiKey",
+      "regenerate": "Regenerate",
+      "reveal": "Click to reveal ApiKey"
+    }
+  },
+  "components": {
+    "_comment": "Component UI Internationalization Strings",
+    "avatar": {},
+    "backBar": {},
+    "blockedFromRoomUsers": {
+      "header": "Isticmaalayaasha la Mamnuucay",
+      "unban": "Ka qaad mamnuucida",
+      "noBans": "cidina wali lama mamnuucin"
+    },
+    "bottomVoiceControl": {
+      "leaveCurrentRoomBtn": "Ka bax qolkaan ",
+      "confirmLeaveRoom": "Ma hubtaa inaad rabtid inaad kabaxdo?",
+      "leave": "ka Bax",
+      "inviteUsersToRoomBtn": "Ku martiqaad isticmaalayaal qolka",
+      "invite": "Martiqaad",
+      "toggleMuteMicBtn": "Toggle mute microphone",
+      "mute": "Aamusi",
+      "unmute": "Codka u fur",
+      "makeRoomPublicBtn": "Qolka ka dhig qol guud!",
+      "settings": "Settings",
+      "speaker": "Hadle",
+      "listener": "Dhageyste",
+      "chat": "Wadahadal",
+      "toggleDeafMicBtn": "Toggle Deafen",
+      "deafen": "Deafen",
+      "undeafen": "Undeafen"
+    },
+    "deviceNotSupported": {
+      "notSupported": "Ma taagerayo devicekaga. Waad abuuri kartaa",
+      "linkText": "issue on GitHub",
+      "addSupport": "waxaan isku dayi doonaa inaan ku daro taageerida devicekaga."
+    },
+    "inviteButton": {
+      "invited": "casuumay",
+      "inviteToRoom": "qolka ku casuum"
+    },
+    "micPermissionBanner": {
+      "permissionDenied": "Oggolaanshaha waa ladiiday isku day inaad gaarikarto mikrafoonkaaga (Waxaa laga yaabaa inaad u baahato inaad gasho settinka biraawsarkaaga oo aad dib u cusboonaysiiso bogga)",
+      "dismiss": "Diid",
+      "tryAgain": "mar kale isku day"
+    },
+    "keyboardShortcuts": {
+      "setKeybind": "set keybind",
+      "listening": "dhagaysi",
+      "toggleMuteKeybind": "toggle mute keybind",
+      "toggleOverlayKeybind": "toggle overlay keybind",
+      "togglePushToTalkKeybind": "toggle push-to-talk keybind",
+      "toggleDeafKeybind": "Toggle deafen keybind"
+    },
+    "userVolumeSlider": {
+      "noAudioMessage": "no audio consumer for some reason"
+    },
+    "addToCalendar": { "add": "Ku dar Kalendarkaga" },
+    "wsKilled": {
+      "description": "WebSocket was killed by the server. This usually happens when you open the website in another tab.",
+      "reconnect": "dib ugu xirmo"
+    },
+    "modals": {
+      "createRoomModal": {
+        "public": "Guud",
+        "private": "gaar ",
+        "roomName": "Magaca qolka",
+        "roomDescription": "Qeexitaanka qolka",
+        "descriptionError": "Ugu badanaan 500",
+        "nameError": "waa inuu u dhexeeyaa 2 ilaa 60 xarfo",
+        "subtitle": "Fill the following fields to start a new room"
+      },
+      "invitedToJoinRoomModal": {
+        "newRoomCreated": "Qol Cusub Ayaa La abuuray",
+        "roomInviteFrom": "Waxaad laga casuumay qolka",
+        "justStarted": "Hada ayey bilaabeen",
+        "likeToJoin": ", ma jeceshahay inaad ku soo biirto?",
+        "inviteReceived": "waa lagugu casuumay"
+      },
+      "editProfileModal": {
+        "usernameTaken": "magaca isticmaalahan waa la qaatay",
+        "avatarUrlError": "Sawir Khaldan",
+        "avatarUrlLabel": "Github/Twitter/Discord avatar url",
+        "displayNameError": "2 ilaa 50 xaraf",
+        "displayNameLabel": "magaca bandhigmaya",
+        "usernameError": "4 ilaa 15 xaraf oo ah alphanumeric/underscore kaliya",
+        "usernameLabel": "Magaca isticmaalaha",
+        "bioError": "ugu badnaan 160 xaraf",
+        "bioLabel": "Bio",
+        "bannerUrlLabel": "Twitter banner URL"
+      },
+      "profileModal": {
+        "blockUserConfirm": "Mahubtaa inaad ka mamnuucdo isticmaalaha qolkasta oo aad abuurtid?",
+        "blockUser": "xanib isticmaalaha",
+        "makeMod": "make mod",
+        "unmod": "unmod",
+        "addAsSpeaker": "Ku dar hadleyaasha",
+        "moveToListener": "ku celi Dhageystayaasha",
+        "banFromChat": "ka mamnuuc hadalka",
+        "banFromRoom": "ka mamnuuc qolka",
+        "goBackToListener": "Ku laabo Dhageystayaasha",
+        "deleteMessage": "tirtir fariintan",
+        "makeRoomCreator": "samee maamulaha qolka",
+        "unBanFromChat": "Ka qaad mamnuucida hadalka",
+        "banIPFromRoom": "Ban IP from Room"
+      },
+      "roomSettingsModal": {
+        "requirePermission": "Waxay u baahnaan doonaan ogolaansho si ay uhadlaan",
+        "makePublic": "qolka ka dhig qol guud",
+        "makePrivate": "qolka ka dhig qol gaar",
+        "renamePublic": "Set public room name",
+        "renamePrivate": "Set private room name",
+        "chatDisabled": "disable chat",
+        "chatCooldown": "Chat Cooldown (milliseconds)",
+        "chat": {
+          "label": "Chat",
+          "enabled": "Enabled",
+          "disabled": "Disabled",
+          "followerOnly": "Follower Only"
+        }
+      },
+      "createBotModal": {
+        "usernameTaken": "Username is taken",
+        "subtitle": "Please fill the details below to create your bot",
+        "title": "Create Bot"
+      }
+    },
+    "followingOnline": {
+      "people": "People",
+      "online": "ONLINE",
+      "noOnline": "You have 0 friends online right now",
+      "showMore": "Show more"
+    },
+    "upcomingRoomsCard": {
+      "upcomingRooms": "qolalka soo socda",
+      "exploreMoreRooms": "Sahmi qolal badan"
+    },
+    "search": {
+      "placeholder": "Raadi qolal, isticmaalayaal ama qeybo",
+      "placeholderShort": "Raadi"
+    },
+    "settingsDropdown": {
+      "profile": "Profile",
+      "language": "luuqadda",
+      "reportABug": "Soo gudbi cillad",
+      "useOldVersion": "Isticmaal Version hore",
+      "logOut": {
+        "button": "Ka bax",
+        "modalSubtitle": "Ma hubtaa inaad ka baxayso?"
+      },
+      "debugAudio": {
+        "debugAudio": "Debug Audio",
+        "stopDebugger": "Stop Debugger"
+      },
+      "downloadApp": "Dajiso Appka",
+      "developer": "Developer Settings"
+    },
+    "userBadges": {
+      "dhStaff": "DogeHouse Staff",
+      "dhContributor": "DogeHouse Contributor"
+    },
+    "messagesDropdown": {
+      "title": "Messages",
+      "showMore": "Show More",
+      "noMessages": "No new messages"
+    }
+  },
+  "modules": {
+    "_comment": "Modules UI Internationalization Strings",
+    "scheduledRooms": {
+      "title": "Jadwalka qolalka",
+      "noneFound": "midna lama helin",
+      "allRooms": "Dhamaan jadwalka qolalka",
+      "myRooms": "Jadwalka qolalkayga",
+      "scheduleRoomHeader": "usame jadwal qol",
+      "startRoom": "Bilaaw qol",
+      "modal": {
+        "needsFuture": "needs to be in the future",
+        "roomName": "magaca qolka",
+        "roomDescription": "qeexitaan",
+        "minLength": "ugu yaraan 2"
+      },
+      "tommorow": "BERRI",
+      "today": "MAANTA",
+      "deleteModal": {
+        "areYouSure": "Ma hubtaa inaad tirtid jadwalka qolkaan?"
+      }
+    },
+    "roomChat": {
+      "title": "Chat",
+      "emotesSoon": "[emotes soon]",
+      "bannedAlert": "Waxaa lagaa mamnuucay wada hadalka",
+      "waitAlert": "Waa inaad sugto ilbiriqsi kahor intaadan dirin fariin kale",
+      "search": "Raadi",
+      "searchResults": "Raadi natiijooyin",
+      "recent": "badanaa la isticmaalo",
+      "sendMessage": "Dir Fariin",
+      "whisper": "fariin gaar ah",
+      "welcomeMessage": "Ku soo dhawow wada hadalka!",
+      "roomDescription": "qeexida qolka",
+      "disabled": "qolka sheekaysigiisa waa la joojiyay",
+      "messageDeletion": {
+        "message": "message",
+        "retracted": "retracted",
+        "deleted": "deleted"
+      }
+    },
+    "roomStatus": {
+      "fuelingRocket": "Fueling rocket",
+      "takingOff": "Taking off",
+      "inSpace": "In space",
+      "approachingMoon": "Ku dhowaanshaha dayaxa",
+      "lunarDoge": "Lunar Doge",
+      "approachingSun": "Ku dhowaanshaha cadceeda",
+      "solarDoge": "Solar Doge",
+      "approachingGalaxy": "Approaching galaxy",
+      "galacticDoge": "Galactic Doge",
+      "spottedLife": "meeraha laga helay nolasha"
+    },
+    "feed": { "yourFeed": "Your Feed" }
+  }
+}

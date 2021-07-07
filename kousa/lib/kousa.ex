@@ -9,27 +9,16 @@ defmodule Kousa do
     Kousa.Metric.UserSessions.setup()
 
     children = [
-      {
-        GenRegistry,
-        worker_module: Onion.UserSession
-      },
-      {
-        GenRegistry,
-        worker_module: Onion.RoomSession
-      },
-      {
-        GenRegistry,
-        worker_module: Onion.RoomChat
-      },
-      {
-        GenRegistry,
-        worker_module: Onion.VoiceRabbit
-      },
-      {
-        GenRegistry,
-        worker_module: Onion.VoiceOnlineRabbit
-      },
+      # top-level supervisor for UserSession group
+      Onion.Supervisors.UserSession,
+      Onion.Supervisors.RoomSession,
+      Onion.Supervisors.Chat,
+      Onion.Supervisors.VoiceRabbit,
+      Onion.Supervisors.VoiceOnlineRabbit,
+      Onion.BotAuthRateLimit,
+      Onion.StatsCache,
       {Beef.Repo, []},
+      {Phoenix.PubSub, name: Onion.PubSub},
       Onion.Telemetry,
       Plug.Cowboy.child_spec(
         scheme: :http,
@@ -43,6 +32,8 @@ defmodule Kousa do
     ]
 
     opts = [strategy: :one_for_one, name: Kousa.Supervisor]
+
+    # TODO: make these into tasks
 
     case Supervisor.start_link(children, opts) do
       {:ok, pid} ->
@@ -67,28 +58,30 @@ defmodule Kousa do
 
   defp start_rooms() do
     Enum.each(Beef.Rooms.all_rooms(), fn room ->
-      GenRegistry.lookup_or_start(Onion.RoomSession, room.id, [
-        %{
-          room_id: room.id,
-          voice_server_id: room.voiceServerId
-        }
-      ])
+      Onion.RoomSession.start_supervised(
+        room_id: room.id,
+        voice_server_id: room.voiceServerId,
+        chat_mode: room.chatMode,
+        room_creator_id: room.creatorId
+      )
     end)
   end
 
+  # TODO: bake this into the supervision tree itself by having the
+  # supervisor fetch and look up the the list of online voice servers
+  # by querying GCP tags.
   defp start_rabbits() do
     n = Application.get_env(:kousa, :num_voice_servers, 1) - 1
 
-    Enum.each(0..n, fn x ->
-      str_id = Kousa.Utils.VoiceServerUtils.idx_to_str_id(x)
+    IO.puts("about to start_rabbits")
 
-      GenRegistry.lookup_or_start(Onion.VoiceRabbit, str_id, [
-        %Onion.VoiceRabbit.State{id: str_id, chan: nil}
-      ])
-
-      GenRegistry.lookup_or_start(Onion.VoiceOnlineRabbit, str_id, [
-        %Onion.VoiceOnlineRabbit.State{id: str_id, chan: nil}
-      ])
+    0..n
+    |> Enum.map(&Kousa.Utils.VoiceServerUtils.idx_to_str_id/1)
+    |> Enum.each(fn id ->
+      Onion.VoiceRabbit.start_supervised(id)
+      Onion.VoiceOnlineRabbit.start_supervised(id)
     end)
+
+    IO.puts("finished rabbits")
   end
 end

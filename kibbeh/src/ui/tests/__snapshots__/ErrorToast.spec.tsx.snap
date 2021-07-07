@@ -2,11 +2,11 @@
 
 exports[`ErrorMessage should match snapshot 1`] = `
 <div
-  class="rounded-8 p-3 relative w-full items-center justify-center text-button transition-transform duration-300 bg-secondary"
+  class="flex rounded-8 p-3 relative w-full items-center justify-center text-button transition-transform duration-300 bg-secondary"
   data-testid="error-message"
 >
   <div
-    class="absolute cursor-pointer"
+    class="flex absolute cursor-pointer"
     data-testid="close-btn"
     style="top: 5px; right: 7px; width: 13px; height: 13px;"
   >
@@ -50,7 +50,7 @@ exports[`ErrorMessage should match snapshot 1`] = `
   <div
     class="flex space-x-4 items-center"
   >
-    <p
+    <div
       class="bold"
     />
   </div>

@@ -1,15 +1,23 @@
-import { RoomUser } from "@dogehouse/kebab";
-import { Picker } from "emoji-mart";
-import "emoji-mart/css/emoji-mart.css";
-import React, { useRef, useState } from "react";
+import { Room, RoomUser, UserWithFollowInfo } from "@dogehouse/kebab";
+import React, { useRef, useState, useEffect } from "react";
+import { Smiley } from "../../../icons";
 import { createChatMessage } from "../../../lib/createChatMessage";
 import { showErrorToast } from "../../../lib/showErrorToast";
-import { useConn } from "../../../shared-hooks/useConn";
+import { useConn, useWrappedConn } from "../../../shared-hooks/useConn";
 import { useTypeSafeTranslation } from "../../../shared-hooks/useTypeSafeTranslation";
 import { Input } from "../../../ui/Input";
 import { customEmojis, CustomEmote } from "./EmoteData";
 import { useRoomChatMentionStore } from "./useRoomChatMentionStore";
 import { useRoomChatStore } from "./useRoomChatStore";
+import { EmojiPicker } from "../../../ui/EmojiPicker";
+import { useEmojiPickerStore } from "../../../global-stores/useEmojiPickerStore";
+import { navigateThroughQueriedUsers } from "./navigateThroughQueriedUsers";
+import { navigateThroughQueriedEmojis } from "./navigateThroughQueriedEmojis";
+import { useTypeSafeQuery } from "../../../shared-hooks/useTypeSafeQuery";
+import { useCurrentRoomIdStore } from "../../../global-stores/useCurrentRoomIdStore";
+import { useScreenType } from "../../../shared-hooks/useScreenType";
+import { useCurrentRoomFromCache } from "../../../shared-hooks/useCurrentRoomFromCache";
+import Dolma from '@dogehouse/dolma';
 
 interface ChatInputProps {
   users: RoomUser[];
@@ -17,63 +25,34 @@ interface ChatInputProps {
 
 export const RoomChatInput: React.FC<ChatInputProps> = ({ users }) => {
   const { message, setMessage } = useRoomChatStore();
-  const {
-    setQueriedUsernames,
-    queriedUsernames,
-    mentions,
-    setMentions,
-    activeUsername,
-    setActiveUsername,
-  } = useRoomChatMentionStore();
+  const { setQueriedUsernames } = useRoomChatMentionStore();
+  const { setOpen, open, queryMatches } = useEmojiPickerStore();
   const conn = useConn();
+  const dolma = new Dolma(customEmojis);
+  const wConn = useWrappedConn();
   const me = conn.user;
-  const [isEmoji, setIsEmoji] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const [lastMessageTimestamp, setLastMessageTimestamp] = useState<number>(0);
   const { t } = useTypeSafeTranslation();
+  const screenType = useScreenType();
 
   let position = 0;
 
-  const navigateThroughQueriedUsers = (e: any) => {
-    // Use dom method, GlobalHotkeys apparently don't catch arrow-key events on inputs
-    if (
-      !["ArrowUp", "ArrowDown", "Enter"].includes(e.code) ||
-      !queriedUsernames.length
-    ) {
-      return;
-    }
+  useEffect(() => {
+    if (!open && screenType !== "fullscreen") inputRef.current?.focus(); // Prevent autofocus on mobile
+  }, [open, screenType]);
 
-    e.preventDefault();
+  const data = useCurrentRoomFromCache();
 
-    let changeToIndex: number | null = null;
-    const activeIndex = queriedUsernames.findIndex(
-      (username) => username.id === activeUsername
+  if (data && !("error" in data) && data.room.chatMode === "disabled") {
+    return (
+      <p className="my-4 text-center text-primary-300">
+        {t("modules.roomChat.disabled")}
+      </p>
     );
+  }
 
-    if (e.code === "ArrowUp") {
-      changeToIndex =
-        activeIndex === 0 ? queriedUsernames.length - 1 : activeIndex - 1;
-    } else if (e.code === "ArrowDown") {
-      changeToIndex =
-        activeIndex === queriedUsernames.length - 1 ? 0 : activeIndex + 1;
-    } else if (e.code === "Enter") {
-      const selected = queriedUsernames[activeIndex];
-      setMentions([...mentions, selected]);
-      setMessage(
-        `${message.substring(0, message.lastIndexOf("@") + 1)}${
-          selected.username
-        } `
-      );
-      setQueriedUsernames([]);
-    }
-
-    // navigate to next/prev mention suggestion item
-    if (changeToIndex !== null) {
-      setActiveUsername(queriedUsernames[changeToIndex]?.id);
-    }
-  };
-
-  const handleSubmit = (
+  const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>
   ) => {
     e.preventDefault();
@@ -85,14 +64,26 @@ export const RoomChatInput: React.FC<ChatInputProps> = ({ users }) => {
       return;
     }
 
-    if (Date.now() - lastMessageTimestamp <= 1000) {
+    if (
+      data &&
+      !("error" in data) &&
+      Date.now() - lastMessageTimestamp <= data.room.chatThrottle
+    ) {
       showErrorToast(t("modules.roomChat.waitAlert"));
-
       return;
     }
 
     const tmp = message;
-    const messageData = createChatMessage(tmp, mentions, users);
+    // const messageData = createChatMessage(tmp, users);
+    const messageData = dolma.encode(message);
+    console.log(messageData);
+
+    messageData.whisperedTo = await Promise.all(messageData.whisperedTo.map(async (uname = "") => {
+      const u = await wConn.query.getUserProfile(uname);
+      if("id" in u!) return u.id;
+      return "";
+    }));
+
 
     // dont empty the input, if no tokens
     if (!messageData.tokens.length) return;
@@ -112,87 +103,83 @@ export const RoomChatInput: React.FC<ChatInputProps> = ({ users }) => {
     setLastMessageTimestamp(Date.now());
   };
 
+  // useEffect(() => {
+  //   const id = setInterval(() => {
+  //     conn.send("send_room_chat_msg", createChatMessage("spam"));
+  //   }, 1001);
+
+  //   return () => {
+  //     clearInterval(id);
+  //   };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
   return (
-    <form onSubmit={handleSubmit} className={`pb-3 px-4 pt-5 flex flex-col`}>
-      {isEmoji ? (
-        <Picker
-          set="apple"
-          onSelect={(emoji: CustomEmote) => {
+    <form onSubmit={handleSubmit} className={`pb-3 px-4 pt-2 flex flex-col`}>
+      <div className={`mb-1 block relative`}>
+        <EmojiPicker
+          emojiSet={customEmojis as any}
+          onEmojiSelect={(emoji) => {
             position =
               (position === 0
                 ? inputRef!.current!.selectionStart
                 : position + 2) || 0;
 
+            let msg = '';
+
+            if ((message.match(/:/g)?.length ?? 0) % 2) {
+              msg = message.split('').reverse().join('');
+              msg = msg.replace(msg.split(':')[0] + ':', '');
+              msg = msg.split('').reverse().join('');
+            } else {
+              msg = message;
+            }
+
             const newMsg = [
-              message.slice(0, position),
-              "native" in emoji
-                ? emoji.native
-                : (message.endsWith(" ") ? "" : " ") +
-                  (emoji.colons || "") +
-                  " ",
-              message.slice(position),
+              msg.slice(0, position),
+              (`:${emoji.short_names[0]}:` || "") +
+                " ",
+              msg.slice(position),
             ].join("");
             setMessage(newMsg);
           }}
-          style={{
-            position: "relative",
-            width: "100%",
-            minWidth: "278px",
-            right: 0,
-            overflowY: "hidden",
-            outline: "none",
-            alignSelf: "flex-end",
-            margin: "0 0 8px 0",
-          }}
-          sheetSize={32}
-          theme="dark"
-          custom={customEmojis}
-          emojiTooltip={true}
-          showPreview={false}
-          showSkinTones={false}
-          i18n={{
-            search: t("modules.roomChat.search"),
-            categories: {
-              search: t("modules.roomChat.searchResults"),
-              recent: t("modules.roomChat.recent"),
-            },
-          }}
         />
-      ) : null}
+      </div>
       <div className="flex items-stretch">
-        <div className="flex-1 mr-2 lg:mr-0 items-end">
-          <Input
-            maxLength={512}
-            placeholder={t("modules.roomChat.sendMessage")}
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            className={`bg-primary-700`}
-            ref={inputRef}
-            autoComplete="off"
-            onKeyDown={navigateThroughQueriedUsers}
-            onFocus={() => {
-              setIsEmoji(false);
-              position = 0;
-            }}
-            id="room-chat-input"
-          />
-          {/* <div
-            style={{
-              color: "rgb(167, 167, 167)",
-              display: "flex",
-              marginRight: 13,
-              marginTop: -35,
-              flexDirection: "row-reverse",
-            }}
-            className={`mt-3 right-12 cursor-pointer`}
-            onClick={() => {
-              setIsEmoji(!isEmoji);
-              position = 0;
-            }}
-          >
-            {/* @todo set correct icon
-            <SolidCompass style={{ inlineSize: "23px" }}></SolidCompass>
-          </div> */}
+        <div className="flex-1">
+          {data && "room" in data && data.room.chatMode === "follower_only" ? (
+            <div className="text-primary-300 mb-1">Follower mode</div>
+          ) : null}
+          <div className="flex flex-1 lg:mr-0 items-center bg-primary-700 rounded-8">
+            <Input
+              maxLength={512}
+              placeholder={t("modules.roomChat.sendMessage")}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              id="room-chat-input"
+              transparent
+              ref={inputRef}
+              autoComplete="off"
+              onKeyDown={
+                queryMatches.length
+                  ? navigateThroughQueriedEmojis
+                  : navigateThroughQueriedUsers
+              }
+              onFocus={() => {
+                setOpen(false);
+                position = 0;
+              }}
+            />
+            <div
+              className={`right-12 cursor-pointer flex flex-row-reverse fill-current text-primary-200 mr-3`}
+              onClick={() => {
+                setOpen(!open);
+                position = 0;
+              }}
+            >
+              <Smiley style={{ inlineSize: "23px" }}></Smiley>
+            </div>
+          </div>
         </div>
 
         {/* Send button (mobile only) */}

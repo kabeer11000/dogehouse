@@ -9,9 +9,11 @@ export default {
 export const Main: Story = () => {
   return (
     <RoomPanelIconBar
+      onToggleChat={() => {}}
       onLeaveRoom={() => {}}
       onInvitePeopleToRoom={() => {}}
       mute={{ isMuted: false, onMute: () => {} }}
+      deaf={{ isDeaf: false, onDeaf: () => {} }}
       onRoomSettings={() => {}}
     />
   );

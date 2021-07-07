@@ -1,0 +1,395 @@
+{
+  "_comment": "nếu bạn thay đổi tệp này, chạy lệnh: yarn i18",
+  "common": {
+    "loadMore": "tải thêm",
+    "loading": "đang tải...",
+    "noUsersFound": "không tìm thấy người dùng",
+    "ok": "ok",
+    "yes": "xác nhận",
+    "no": "không",
+    "cancel": "Hủy",
+    "save": "Lưu",
+    "edit": "Chỉnh sửa",
+    "delete": "Xóa",
+    "joinRoom": "Tham gia phòng",
+    "copyLink": "sao chép liên kết",
+    "copied": "đã sao chép liên kết",
+    "formattedIntlDate": "{{date, intlDate}}",
+    "formattedIntlTime": "{{time, intlTime}}",
+    "requestPermissions": "Lưu ý, không cung cấp đủ quyền truy cập cho DogeHouse có thể gây ra những lỗi không mong muốn",
+    "copy": "Copy",
+    "error": "Error"
+  },
+  "header": {
+    "_comment": "Main Header UI Internationalization Strings",
+    "title": "DogeHouse",
+    "mutedTitle": "Tắt âm | DogeHouse",
+    "deafenedTitle": "Tắt tiếng | DogeHouse",
+    "dashboard": "Dashboard",
+    "connectionTaken": "Kết nối đã được thực hiện"
+  },
+  "footer": {
+    "_comment": "Main Footer UI Internationalization Strings",
+    "link_1": "Câu chuyện Khởi nguồn",
+    "link_2": "Discord",
+    "link_3": "Báo cáo sự cố"
+  },
+  "pages": {
+    "_comment": "Respective Page UI Internationalization Strings",
+    "admin": {
+      "ban": "cấm",
+      "userStaffandContrib": "Nhân viên người dùng và đóng góp",
+      "staff": "Nhân viên: ",
+      "contributions": "Người đóng góp",
+      "username": "Tên người dùng",
+      "usrStaff": "Nhân viên người dùng",
+      "usrContributions": "Đóng góp của người dùng",
+      "reason": "lý do",
+      "usernamePlaceholder": "tên người dùng đễ thực hiện các tác vụ"
+    },
+    "followingOnlineList": {
+      "listHeader": "Danh sách người dùng bạn theo dõi đang ở trong một phòng nào đó mà không phải là phòng riêng.",
+      "currentRoom": "phòng hiện tại:",
+      "startPrivateRoom": "tạo phòng riêng tư với họ",
+      "title": "Mọi người"
+    },
+    "followList": {
+      "followHim": "theo dõi",
+      "followingHim": "đang theo dõi",
+      "title": "Mọi người",
+      "followingNone": "Không đang theo dõi ai",
+      "noFollowers": "Không có người theo dõi"
+    },
+    "home": {
+      "createRoom": "Tạo phòng",
+      "refresh": "Làm mới",
+      "editRoom": "Chỉnh sửa phòng",
+      "desktopAlert": "Tải xuống ứng dụng DogeHouse dành cho desktop ngay hôm nay!"
+    },
+    "inviteList": {
+      "roomGone": "phòng đã kết thúc, quay lại đi",
+      "shareRoomLink": "Chia sẻ liên kết phòng",
+      "inviteFollowers": "Bạn có thể mời những người theo dõi của bạn khi họ đang trực tuyến:",
+      "whenFollowersOnline": "Khi người theo dõi của bạn trực tuyến, họ sẽ hiện lên ở đây."
+    },
+    "login": {
+      "headerText": "Đưa trải nghiệm trò chuyện trực tuyến lên mặt trăng🚀",
+      "featureText_1": "Chế độ tối",
+      "featureText_2": "Đăng ký Miễn phí",
+      "featureText_3": "Hỗ trợ Đa nền tảng",
+      "featureText_4": "Mã nguồn mở",
+      "featureText_5": "Trò chuyện bằng tin nhắn",
+      "featureText_6": "Được bảo kê bởi Doge",
+      "loginGithub": "đăng nhập với GitHub",
+      "loginTwitter": "đăng nhập với Twitter",
+      "createTestUser": "tạo người dùng thử",
+      "loginDiscord": "Login with Discord"
+    },
+    "myProfile": {
+      "logout": "đăng xuất",
+      "probablyLoading": "chắc là đang tải...",
+      "voiceSettings": "cài đặt giọng nói",
+      "overlaySettings": "cài đặt overlay",
+      "soundSettings": "cài đặt âm thanh",
+      "deleteAccount": "xóa tài khoản",
+      "couldNotFindUser": "Xin lỗi, chúng tôi không thể tìm thấy người dùng đó",
+      "privacySettings": "Cài đặt quyền riêng tư"
+    },
+    "notFound": {
+      "whoopsError": "Á! Đi lạc đâu đây.",
+      "goHomeMessage": "Đừng lo. Bạn có thể",
+      "goHomeLinkText": "quay về trang chủ"
+    },
+    "room": {
+      "speakers": "Diễn giả",
+      "requestingToSpeak": "Yêu cầu nói",
+      "listeners": "Thính giả",
+      "allowAll": "Cho phép tất cả",
+      "allowAllConfirm": "Bạn có chắc không? Hành động này sẽ cho phép {{count}} người dùng có quyền nói"
+    },
+    "searchUser": { "search": "tìm kiếm..." },
+    "soundEffectSettings": {
+      "header": "Âm thanh",
+      "title": "Cài đặt âm thanh",
+      "playSound": "Phát âm thanh"
+    },
+    "viewUser": {
+      "editProfile": "chỉnh sửa hồ sơ",
+      "followsYou": "Theo dõi bạn",
+      "followers": "người theo dõi",
+      "following": "đang theo dõi",
+      "followHim": "Theo dõi",
+      "unfollow": "Bỏ theo dõi",
+      "followingHim": "đang theo dõi",
+      "copyProfileUrl": "sao chép liên kết hồ sơ",
+      "urlCopied": "Đã sao chép liên kết",
+      "about": "About",
+      "bot": "Bot",
+      "profileTabs": {
+        "about": "Về",
+        "rooms": "Phòng",
+        "scheduled": "Lên kế hoạch",
+        "recorded": "Ghi lại",
+        "clips": "Clips",
+        "admin": "Quản trị viên"
+      },
+      "block": "Chặn",
+      "unblock": "Bỏ chặn",
+      "sendDM": "Gửi tin nhắn trực tiếp",
+      "aboutSuffix": "",
+      "errors": {
+        "blocked": "This user has blocked you.",
+        "default": "Whoops! We couldn't load this user."
+      }
+    },
+    "voiceSettings": {
+      "header": "Cài đặt giọng nói",
+      "mic": "mic:",
+      "permissionError": "không tìm thấy mic, bạn có thể chưa cắm hoặc chưa cấp quyền cho trang web này..",
+      "refresh": "làm mới danh sách mic",
+      "volume": "âm lượng:",
+      "title": "Cài đặt âm thanh"
+    },
+    "overlaySettings": {
+      "header": "Cài đặt Overlay",
+      "input": {
+        "errorMsg": "Vui lòng nhập tiêu đề hợp lý cho App",
+        "label": "Nhập tiêu đề cho app"
+      }
+    },
+    "download": {
+      "starting": "Đang bắt đầu tải xướng...",
+      "failed": "Không thể tự động tải xuống, vui lòng thử lại",
+      "visit_gh": "Ghé thăm bản Release trên Github",
+      "prompt": "Bấm vào nút dưới đây để bắt đầu tải",
+      "download_now": "Tải ngay",
+      "download_for": "Tải cho %nền tảng% (%ext%)"
+    },
+    "privacySettings": {
+      "title": "Cài đặt quyền riêng tư",
+      "header": "Cài đặt quyền riêng tư",
+      "whispers": { "label": "Thì thầm", "on": "Bật", "off": "Tắt" }
+    },
+    "botEdit": {
+      "yourBots": "Your Bots",
+      "bots": "Bots",
+      "title": "Bot Information",
+      "apiKey": "ApiKey",
+      "regenerate": "Regenerate",
+      "reveal": "Click to reveal ApiKey"
+    }
+  },
+  "components": {
+    "_comment": "Component UI Internationalization Strings",
+    "avatar": {},
+    "backBar": {},
+    "blockedFromRoomUsers": {
+      "header": "Nguời dùng bị cấm",
+      "unban": "bỏ cấm",
+      "noBans": "chưa có ai bị cấm"
+    },
+    "bottomVoiceControl": {
+      "leaveCurrentRoomBtn": "Thoát phòng hiện tại",
+      "confirmLeaveRoom": "Bạn có chắc muốn thoát không?",
+      "leave": "Thoát",
+      "inviteUsersToRoomBtn": "Mời người dùng vào phòng",
+      "invite": "Mời",
+      "toggleMuteMicBtn": "Tắt/mở mic",
+      "mute": "Tắt mic",
+      "unmute": "Mở mic",
+      "makeRoomPublicBtn": "Đặt phòng thành chế độ công khai!",
+      "settings": "Cài đặt",
+      "speaker": "Diễn giả",
+      "listener": "Thính giả",
+      "chat": "Trò chuyện",
+      "toggleDeafMicBtn": "Bật/tắt tắt tiếng",
+      "deafen": "Tắt tiếng",
+      "undeafen": "Bỏ tắt tiếng"
+    },
+    "deviceNotSupported": {
+      "notSupported": "Thiết bị của bạn hiện không được hỗ trợ. Bạn có thể tạo một",
+      "linkText": "lỗi tại GitHub",
+      "addSupport": "tôi sẽ thêm hỗ trợ cho thiết bị của bạn."
+    },
+    "inviteButton": { "invited": "đã mời", "inviteToRoom": "mời vào phòng" },
+    "micPermissionBanner": {
+      "permissionDenied": "Không có quyền truy cập mic của bạn (thử xem lại cài đặt của trình duyệt và tải lại trang)",
+      "dismiss": "bỏ qua",
+      "tryAgain": "thử lại"
+    },
+    "keyboardShortcuts": {
+      "setKeybind": "cài đặt tổ hợp phím",
+      "listening": "đang nghe",
+      "toggleMuteKeybind": "phím tắt/mở mic",
+      "toggleOverlayKeybind": "phím bật/tắt overlay",
+      "togglePushToTalkKeybind": "phím nhấn-để-nói",
+      "toggleDeafKeybind": "phím bật/tắt tắng tiếng"
+    },
+    "userVolumeSlider": {
+      "noAudioMessage": "không có âm thanh vì một số lý do"
+    },
+    "addToCalendar": { "add": "Thêm vào lịch" },
+    "wsKilled": {
+      "description": "WebSocket đã bị ngắt kết nối bởi server. Điều này thường là do bạn đang mở trang web ở nhiều tab khác nhau.",
+      "reconnect": "kết nối lại"
+    },
+    "modals": {
+      "createRoomModal": {
+        "public": "Công khai",
+        "private": "Riêng tư",
+        "roomName": "Tên phòng",
+        "roomDescription": "Mô tả phòng",
+        "descriptionError": "tối đa 500 ký tự",
+        "nameError": "phải từ 2 đến 60 ký tự",
+        "subtitle": "Điền vào các trường sau để bắt đầu một phòng mới"
+      },
+      "invitedToJoinRoomModal": {
+        "newRoomCreated": "Đã tạo phòng mới",
+        "roomInviteFrom": "Mời vào phòng đến từ",
+        "justStarted": "Mọi người vừa chỉ mới bắt đầu",
+        "likeToJoin": ", bạn có muốn vào không?",
+        "inviteReceived": "bạn đã được mời vào"
+      },
+      "editProfileModal": {
+        "usernameTaken": "tên người dùng đã tồn tại",
+        "avatarUrlError": "Hình ảnh không hợp lệ",
+        "avatarUrlLabel": "Liên kết đến ảnh đại diện Github/Twitter/Discord",
+        "displayNameError": "phải có độ dài từ 2 tới 50 ký tự",
+        "displayNameLabel": "Tên hiển thị",
+        "usernameError": "phải có độ dài từ 4 đến 15 ký tự và chỉ được dùng chữ, số hoặc gạch dưới",
+        "usernameLabel": "Tên người dùng",
+        "bioError": "tối đa 160 ký tự",
+        "bioLabel": "Mô tả",
+        "bannerUrlLabel": "URL ảnh bìa Twitter"
+      },
+      "profileModal": {
+        "blockUserConfirm": "Bạn có chắc chắn muốn cấm người dùng này tham gia bất kỳ phòng nào bạn tạo không?",
+        "blockUser": "cấm người dùng",
+        "makeMod": "cho làm kiểm duyệt viên",
+        "unmod": "bỏ làm kiểm duyệt viên",
+        "addAsSpeaker": "cho làm diễn giả",
+        "moveToListener": "cho làm thính giả",
+        "banFromChat": "cấm gửi tin nhắn",
+        "banFromRoom": "cấm khỏi phòng",
+        "goBackToListener": "trở về làm thính giả",
+        "deleteMessage": "xóa tin nhắn này",
+        "makeRoomCreator": "cho làm quản trị viên",
+        "unBanFromChat": "Huỷ cấm trò chuyện",
+        "banIPFromRoom": "Cấm địa chỉ IP khỏi phòng"
+      },
+      "roomSettingsModal": {
+        "requirePermission": "phải được cấp quyền mới có thể nói",
+        "makePublic": "chuyển thành phòng công khai",
+        "makePrivate": "chuyển thành phòng riêng tư",
+        "renamePublic": "Đặt tên phòng công khai",
+        "renamePrivate": "Đặt tên phòng riêng",
+        "chatDisabled": "vô hiệu hoá chat",
+        "chatCooldown": "Thời gian hồi trò chuyện (giây)",
+        "chat": {
+          "label": "Trò chuyện",
+          "enabled": "Kích hoạt",
+          "disabled": "Vô hiệu hoá",
+          "followerOnly": "Chỉ người theo dõi"
+        }
+      },
+      "createBotModal": {
+        "usernameTaken": "Username is taken",
+        "subtitle": "Please fill the details below to create your bot",
+        "title": "Create Bot"
+      }
+    },
+    "followingOnline": {
+      "people": "Mọi người",
+      "online": "Trực tuyến",
+      "noOnline": "Bạn có 0 người bạn trực tuyến ngay bây giờ",
+      "showMore": "Nhiều hơn"
+    },
+    "upcomingRoomsCard": {
+      "upcomingRooms": "Các phòng sắp tới",
+      "exploreMoreRooms": "Khám phá các phòng khác"
+    },
+    "search": {
+      "placeholder": "Tìm theo phòng, người dùng, hoặc danh mục",
+      "placeholderShort": "Tìm kiếm"
+    },
+    "settingsDropdown": {
+      "profile": "Hồ sơ",
+      "language": "Ngôn ngữ",
+      "reportABug": "Báo cáo lỗ hỏng",
+      "useOldVersion": "Sử dụng phiên bản cũ",
+      "logOut": {
+        "button": "Đăng xuất",
+        "modalSubtitle": "Bạn có chắc muốn đăng xuất?"
+      },
+      "debugAudio": {
+        "debugAudio": "Gỡ lỗi âm thanh",
+        "stopDebugger": "Dừng trình gỡ lỗi"
+      },
+      "downloadApp": "Tải App",
+      "developer": "Developer Settings"
+    },
+    "userBadges": {
+      "dhStaff": "Nhân viên của DogeHouse",
+      "dhContributor": "Người đóng góp cho DogeHouse"
+    },
+    "messagesDropdown": {
+      "title": "Tin nhắn",
+      "showMore": "Nhiều hơn",
+      "noMessages": "Không có tin nhắn mới"
+    }
+  },
+  "modules": {
+    "_comment": "Modules UI Internationalization Strings",
+    "scheduledRooms": {
+      "title": "Phòng đã lên lịch",
+      "noneFound": "không tìm thấy gì",
+      "allRooms": "tất cả phòng đã lên lịch",
+      "myRooms": "phòng do tôi lên lịch",
+      "scheduleRoomHeader": "Lên lịch phòng mới",
+      "startRoom": "bắt đầu phòng",
+      "modal": {
+        "needsFuture": "cần phải ở tương lai",
+        "roomName": "tên phòng",
+        "roomDescription": "Mô tả",
+        "minLength": "tối thiểu 2 ký tự"
+      },
+      "tommorow": "NGÀY MAI",
+      "today": "HÔM NAY",
+      "deleteModal": {
+        "areYouSure": "Bạn có chắc chắn muốn xóa phòng đã lên lịch này không?"
+      }
+    },
+    "roomChat": {
+      "title": "Trò chuyện",
+      "emotesSoon": "[sắp có biểu tượng cảm xúc]",
+      "bannedAlert": "Bạn đã bị cấm gửi tin nhắn",
+      "waitAlert": "Bạn cần chờ một giây trước khi gửi tin nhắn kế tiếp",
+      "search": "Tìm kiếm",
+      "searchResults": "Kết quả tìm kiếm",
+      "recent": "Hay sử dụng",
+      "sendMessage": "Gửi tin nhắn",
+      "whisper": "Thì thầm",
+      "welcomeMessage": "Chào mừng đến với phòng trò chuyện!",
+      "roomDescription": "Mô tả phòng",
+      "disabled": "phòng chat đã bị vô hiệu hoá",
+      "messageDeletion": {
+        "message": "tin nhắn",
+        "retracted": "đã thu hồi",
+        "deleted": "đã xoá"
+      }
+    },
+    "roomStatus": {
+      "fuelingRocket": "Đang đổ xăng cho tên lửa",
+      "takingOff": "Cất cánh",
+      "inSpace": "Đang ở trên không gian",
+      "approachingMoon": "Đang tiếp cận mặt trăng",
+      "lunarDoge": "Doge đang ở trên mặt trăng",
+      "approachingSun": "Đang tiếp cận mặt trời",
+      "solarDoge": "Doge đang bay quanh hệ mặt trời",
+      "approachingGalaxy": "Đang tiếp cận dải ngân hà",
+      "galacticDoge": "Doge đang bay quanh thiên hà",
+      "spottedLife": "Đã tìm thấy hành tinh có sự sống"
+    },
+    "feed": { "yourFeed": "Bản tin của bạn" }
+  }
+}

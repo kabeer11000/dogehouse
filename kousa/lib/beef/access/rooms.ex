@@ -67,7 +67,9 @@ defmodule Beef.Access.Rooms do
         left_join: rb in RoomBlock,
         on: rb.roomId == r.id and rb.userId == ^user_id,
         left_join: ub in UserBlock,
-        on: ub.userIdBlocked == ^user_id,
+        on:
+          (r.creatorId == ub.userIdBlocked and ub.userId == ^user_id) or
+            (r.creatorId == ub.userId and ub.userIdBlocked == ^user_id),
         where:
           is_nil(ub.userIdBlocked) and is_nil(rb.roomId) and r.isPrivate == false and
             r.numPeopleInside < ^max_room_size,
@@ -128,6 +130,17 @@ defmodule Beef.Access.Rooms do
     )
   end
 
+  def search_name(start_of_name) do
+    search_str = start_of_name <> "%"
+
+    Query.start()
+    |> where([r], ilike(r.name, ^search_str) and r.isPrivate == false)
+    |> order_by([r], desc: r.numPeopleInside)
+    |> limit([], 15)
+    |> Repo.all()
+  end
+
+  @spec all_rooms :: any
   def all_rooms() do
     Repo.all(Room)
   end

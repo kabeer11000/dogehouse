@@ -6,7 +6,9 @@ exports[`MainGrid should match snapshot 1`] = `
   data-testid="main-grid"
 >
   <div
-    style="display: grid; grid-template-columns: 235px 600px 325px; column-gap: 60px;"
+    class="relative w-full px-3 "
+    id="main"
+    style="display: flex; grid-template-columns: 1fr; column-gap: 60px;"
   >
     Child
   </div>

@@ -8,8 +8,8 @@ Array [
     style="width: 20px; height: 20px;"
   >
     <img
-      alt="avatar"
-      class="rounded-full w-full h-full object-cover"
+      alt="your-avatar"
+      class="rounded-full w-full h-full object-cover "
       src=""
     />
   </div>,
@@ -19,8 +19,8 @@ Array [
     style="width: 20px; height: 20px;"
   >
     <img
-      alt="avatar"
-      class="rounded-full w-full h-full object-cover"
+      alt="your-avatar"
+      class="rounded-full w-full h-full object-cover "
       src=""
     />
   </div>,
@@ -30,8 +30,8 @@ Array [
     style="width: 20px; height: 20px;"
   >
     <img
-      alt="avatar"
-      class="rounded-full w-full h-full object-cover"
+      alt="your-avatar"
+      class="rounded-full w-full h-full object-cover "
       src=""
     />
   </div>,

@@ -1,9 +1,10 @@
-import { wrap, raw, UUID } from "@dogehouse/kebab";
+import { wrap, audioWrap, raw } from "@dogehouse/kebab";
 import { connect as mediasoupConnect } from "@dogehouse/kebab/lib/audio/mediasoup-client";
 import { Device } from "mediasoup-client";
 
 const main = async () => {
   const wrapper = wrap(await raw.connect(process.env.DOGEHOUSE_TOKEN!, process.env.DOGEHOUSE_REFRESH_TOKEN!, {}));
+  const audioWrapper = audioWrap(wrapper.connection);
   const { rooms } = await wrapper.query.getTopPublicRooms()
   const theRoom = rooms[0];
   const device = new Device();
@@ -31,17 +32,16 @@ const main = async () => {
     audio.play();
   };
 
-  const unsubYjap = wrapper.connection.addListener("you-joined-as-peer", async (data: any) => {
+  const unsubYjap = audioWrapper.subscribe.youJoinedAsPeer(async ({ routerRtpCapabilities, recvTransportOptions }) => {
     unsubYjap();
 
     await mediasoupConnect(
       wrapper.connection,
-      device,
-      data.routerRtpCapabilities,
+      routerRtpCapabilities,
       "output",
-      data.recvTransportOptions,
+      recvTransportOptions,
       playOutput
-    );
+    )(device);
     currentRole.textContent = "Listener";
 
     const button = document.createElement("button");
@@ -50,47 +50,43 @@ const main = async () => {
     button.addEventListener("click", () => wrapper.connection.send("ask_to_speak", {}));
     currentRole.appendChild(button);
 
-    const unsubYanas = wrapper.connection.addListener("you-are-now-a-speaker", async (data: any) => {
-      unsubYanas();
+    const unsubYbs = audioWrapper.subscribe.youBecameSpeaker(async ({ sendTransportOptions }) => {
+      unsubYbs();
 
       await mediasoupConnect(
         wrapper.connection,
-        device,
-        data.routerRtpCapabilities,
+        routerRtpCapabilities,
         "input",
-        data.sendTransportOptions,
+        sendTransportOptions,
         await makeMicTrack()
-      );
+      )(device);
 
       currentRole.removeChild(button);
     });
-
-    const unsubYlr = wrapper.connection.addListener("you_left_room", () => {
-      unsubYlr();
-      unsubYanas();
-    });
   });
 
-  const unsubYjas = wrapper.connection.addListener("you-joined-as-speaker", async (data: any) => {
+  const unsubYjas = audioWrapper.subscribe.youJoinedAsSpeaker(async ({
+    routerRtpCapabilities,
+    recvTransportOptions,
+    sendTransportOptions
+  }) => {
     unsubYjas();
 
     await mediasoupConnect(
       wrapper.connection,
-      device,
-      data.routerRtpCapabilities,
+      routerRtpCapabilities,
       "output",
-      data.recvTransportOptions,
+      recvTransportOptions,
       playOutput
-    );
+    )(device);
 
     await mediasoupConnect(
       wrapper.connection,
-      device,
-      data.routerRtpCapabilities,
+      routerRtpCapabilities,
       "input",
-      data.sendTransportOptions,
+      sendTransportOptions,
       await makeMicTrack()
-    );
+    )(device);
   });
 
   const extraInfo = await wrapper.query.joinRoomAndGetInfo(theRoom.id);

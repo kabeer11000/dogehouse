@@ -6,7 +6,7 @@ exports[`MessageElement should match snapshot 1`] = `
   data-testid="msg-element"
 >
   <div
-    class="mr-3"
+    class="flex mr-3"
   >
     <div
       class="relative inline-block "
@@ -14,8 +14,8 @@ exports[`MessageElement should match snapshot 1`] = `
       style="width: 40px; height: 40px;"
     >
       <img
-        alt="avatar"
-        class="rounded-full w-full h-full object-cover"
+        alt="your-avatar"
+        class="rounded-full w-full h-full object-cover "
         src=""
       />
       <span
@@ -30,7 +30,7 @@ exports[`MessageElement should match snapshot 1`] = `
     style="width: calc(100% - 50px);"
   >
     <div
-      class="justify-between"
+      class="flex justify-between"
     >
       <span
         class="text-button font-bold inline-block truncate mr-1"
@@ -42,7 +42,7 @@ exports[`MessageElement should match snapshot 1`] = `
         class="text-primary-300 text-sm font-medium inline-block truncate"
         style="line-height: 22px;"
       >
-        about 51 years
+        over 51 years
          ago
       </span>
     </div>

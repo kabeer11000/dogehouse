@@ -1,5 +1,5 @@
 {
-  "_comment": "if you change this file, do: npm run i18",
+  "_comment": "if you change this file, do: yarn i18",
   "common": {
     "loadMore": "ŝarĝi pli",
     "loading": "ŝarĝante...",
@@ -16,12 +16,17 @@
     "copied": "kopiita",
     "formattedIntlDate": "{{date, intlDate}}",
     "formattedIntlTime": "{{time, intlTime}}",
-    "requestPermissions": "Please note running DogeHouse without accessibility permissions may cause unwanted errors"
+    "requestPermissions": "Please note running DogeHouse without accessibility permissions may cause unwanted errors",
+    "copy": "Copy",
+    "error": "Error"
   },
   "header": {
     "_comment": "Main Header UI Internationalization Strings",
     "title": "DogeHouse",
-    "mutedTitle": "Silentigita | DogeHouse"
+    "mutedTitle": "Silentigita | DogeHouse",
+    "deafenedTitle": "Deafened | DogeHouse",
+    "dashboard": "Dashboard",
+    "connectionTaken": "Connection Taken"
   },
   "footer": {
     "_comment": "Main Footer UI Internationalization Strings",
@@ -31,14 +36,36 @@
   },
   "pages": {
     "_comment": "Respective Page UI Internationalization Strings",
-    "banUser": { "ban": "malpermeso" },
+    "admin": {
+      "ban": "malpermeso",
+      "userStaffandContrib": "User Staff & Contributions",
+      "staff": "Staff: ",
+      "contributions": "Contributions",
+      "username": "Username",
+      "usrStaff": "User Staff",
+      "usrContributions": "User Contributions",
+      "reason": "reason",
+      "usernamePlaceholder": "username to perform actions on"
+    },
     "followingOnlineList": {
       "listHeader": "Listo de uzantoj, kiuj ne estas en privata ĉambro kaj kiun vi sekvas.",
       "currentRoom": "nuntempe en:",
-      "startPrivateRoom": "komencu privatan ĉambron kun ili"
+      "startPrivateRoom": "komencu privatan ĉambron kun ili",
+      "title": "People"
     },
-    "followList": { "followHim": "follow", "followingHim": "following" },
-    "home": { "createRoom": "Kreu Ĉambron", "refresh": "Refreŝigu" },
+    "followList": {
+      "followHim": "follow",
+      "followingHim": "following",
+      "title": "People",
+      "followingNone": "Not following anyone",
+      "noFollowers": "No followers"
+    },
+    "home": {
+      "createRoom": "Kreu Ĉambron",
+      "refresh": "Refreŝigu",
+      "editRoom": "Edit Room",
+      "desktopAlert": "Download the DogeHouse desktop app today!"
+    },
     "inviteList": {
       "roomGone": "ĉambro for, reiru",
       "shareRoomLink": "dividi ligon al ĉambro",
@@ -55,7 +82,8 @@
       "featureText_6": "Funkciigita de Doge",
       "loginGithub": "ensaluti per GitHub",
       "loginTwitter": "ensaluti per Twitter",
-      "createTestUser": "krei testuzanton"
+      "createTestUser": "krei testuzanton",
+      "loginDiscord": "Login with Discord"
     },
     "myProfile": {
       "logout": "elsaluti",
@@ -63,7 +91,9 @@
       "voiceSettings": "iri al voĉaj agordoj",
       "soundSettings": "iru al sonaj agordoj",
       "deleteAccount": "forigi konton",
-      "overlaySettings": "go to overlay settings"
+      "overlaySettings": "go to overlay settings",
+      "couldNotFindUser": "Sorry, we could not find that user",
+      "privacySettings": "Privacy settings"
     },
     "notFound": {
       "whoopsError": "Ho ve! Ĉi tiu paĝo perdiĝis en konversacio",
@@ -78,7 +108,11 @@
       "allowAllConfirm": "Are you sure? This will allow all {{count}} requesting users to speak"
     },
     "searchUser": { "search": "serĉi..." },
-    "soundEffectSettings": { "header": "Sonoj" },
+    "soundEffectSettings": {
+      "header": "Sonoj",
+      "title": "Sound Settings",
+      "playSound": "Play Sound"
+    },
     "viewUser": {
       "editProfile": "redakti profilon",
       "followsYou": "sekvas vin",
@@ -88,14 +122,33 @@
       "followingHim": "following",
       "copyProfileUrl": "copy profile url",
       "urlCopied": "URL copied to clipboard",
-      "unfollow": "Unfollow"
+      "unfollow": "Unfollow",
+      "about": "About",
+      "bot": "Bot",
+      "profileTabs": {
+        "about": "About",
+        "rooms": "Rooms",
+        "scheduled": "Scheduled",
+        "recorded": "Recorded",
+        "clips": "Clips",
+        "admin": "Admin"
+      },
+      "block": "Block",
+      "unblock": "Unblock",
+      "sendDM": "Send DM",
+      "aboutSuffix": "",
+      "errors": {
+        "blocked": "This user has blocked you.",
+        "default": "Whoops! We couldn't load this user."
+      }
     },
     "voiceSettings": {
       "header": "Voĉaj Agordoj",
       "mic": "mikrofono:",
       "permissionError": "neniuj mikrofonoj trovitaj, vi aŭ havas neniujn enŝovitajn aŭ ne donis permeson al ĉi tiu retejo.",
       "refresh": "refreŝigi mikrofonan liston",
-      "volume": "volumo:"
+      "volume": "volumo:",
+      "title": "Voice Settings"
     },
     "overlaySettings": {
       "header": "Overlay Settings",
@@ -103,6 +156,27 @@
         "errorMsg": "Please enter valid app title",
         "label": "Enter app title"
       }
+    },
+    "download": {
+      "starting": "Starting download...",
+      "failed": "Could not auto-download, please try again later",
+      "visit_gh": "Visit Github Releases",
+      "prompt": "Click on the button below to start download",
+      "download_now": "Download Now",
+      "download_for": "Download for %platform% (%ext%)"
+    },
+    "privacySettings": {
+      "title": "Privacy Settings",
+      "header": "Privacy Settings",
+      "whispers": { "label": "Whispers", "on": "On", "off": "Off" }
+    },
+    "botEdit": {
+      "yourBots": "Your Bots",
+      "bots": "Bots",
+      "title": "Bot Information",
+      "apiKey": "ApiKey",
+      "regenerate": "Regenerate",
+      "reveal": "Click to reveal ApiKey"
     }
   },
   "components": {
@@ -127,7 +201,10 @@
       "settings": "Agordoj",
       "speaker": "Parolanto",
       "listener": "Aŭskultanto",
-      "chat": "Babili"
+      "chat": "Babili",
+      "toggleDeafMicBtn": "Toggle Deafen",
+      "deafen": "Deafen",
+      "undeafen": "Undeafen"
     },
     "deviceNotSupported": {
       "notSupported": "Via aparato nuntempe ne estas subtenata. Vi povas krei",
@@ -148,7 +225,8 @@
       "listening": "aŭskultanta",
       "toggleMuteKeybind": "baskuli mutan klavaron",
       "togglePushToTalkKeybind": "ŝalti puŝ-al-parolan klavaron",
-      "toggleOverlayKeybind": "toggle overlay keybind"
+      "toggleOverlayKeybind": "toggle overlay keybind",
+      "toggleDeafKeybind": "Toggle deafen keybind"
     },
     "userVolumeSlider": { "noAudioMessage": "neniu audio-konsumanto ial" },
     "addToCalendar": { "add": "Aldoni al Kalendaro" },
@@ -163,7 +241,8 @@
         "roomName": "ĉambronomo",
         "roomDescription": "ĉambra priskribo",
         "descriptionError": "maksimuma longo 500",
-        "nameError": "devas havi inter 2 kaj 60 signojn"
+        "nameError": "devas havi inter 2 kaj 60 signojn",
+        "subtitle": "Fill the following fields to start a new room"
       },
       "invitedToJoinRoomModal": {
         "newRoomCreated": "Nova Ĉambro Kreita",
@@ -175,13 +254,14 @@
       "editProfileModal": {
         "usernameTaken": "Uzantnomo estis prenita",
         "avatarUrlError": "Nevalida bildo",
-        "avatarUrlLabel": "URL de GitHub/Twitter avataro",
+        "avatarUrlLabel": "URL de Github/Twitter/Discord avataro",
         "displayNameError": "longo 2 ĝis 50 signoj",
         "displayNameLabel": "Vidiga Nomo",
         "usernameError": "longo 4 ĝis 15 signoj kaj nur alfanombra/substreko",
         "usernameLabel": "Uzantnomo",
         "bioError": "maksimuma longo de 160 signoj",
-        "bioLabel": "Biografio"
+        "bioLabel": "Biografio",
+        "bannerUrlLabel": "Twitter banner URL"
       },
       "profileModal": {
         "blockUserConfirm": "Ĉu vi certas, ke vi volas malhelpi ĉi tiun uzanton aliĝi al iu ajn ĉambro, kiun vi iam kreis?",
@@ -194,13 +274,69 @@
         "banFromRoom": "malpermeso de ĉambro",
         "goBackToListener": "reiru al aŭskultanto",
         "deleteMessage": "forigu ĉi tiun mesaĝon",
-        "makeRoomCreator": "fari ĉambron administranto"
+        "makeRoomCreator": "fari ĉambron administranto",
+        "unBanFromChat": "Unban from Chat",
+        "banIPFromRoom": "Ban IP from Room"
       },
       "roomSettingsModal": {
         "requirePermission": "postulas permeson paroli",
         "makePublic": "publikigi ĉambron",
-        "makePrivate": "privatigi ĉambron"
+        "makePrivate": "privatigi ĉambron",
+        "renamePublic": "Set public room name",
+        "renamePrivate": "Set private room name",
+        "chatDisabled": "disable chat",
+        "chatCooldown": "Chat Cooldown (milliseconds)",
+        "chat": {
+          "label": "Chat",
+          "enabled": "Enabled",
+          "disabled": "Disabled",
+          "followerOnly": "Follower Only"
+        }
+      },
+      "createBotModal": {
+        "usernameTaken": "Username is taken",
+        "subtitle": "Please fill the details below to create your bot",
+        "title": "Create Bot"
       }
+    },
+    "followingOnline": {
+      "people": "People",
+      "online": "ONLINE",
+      "noOnline": "You have 0 friends online right now",
+      "showMore": "Show more"
+    },
+    "upcomingRoomsCard": {
+      "upcomingRooms": "Upcoming rooms",
+      "exploreMoreRooms": "Explore More Rooms"
+    },
+    "search": {
+      "placeholder": "Search for rooms, users or categories",
+      "placeholderShort": "Search"
+    },
+    "settingsDropdown": {
+      "profile": "Profile",
+      "language": "Language",
+      "reportABug": "Report A Bug",
+      "useOldVersion": "Use Old Version",
+      "logOut": {
+        "button": "Log out",
+        "modalSubtitle": "Are you sure you want to logout?"
+      },
+      "debugAudio": {
+        "debugAudio": "Debug Audio",
+        "stopDebugger": "Stop Debugger"
+      },
+      "downloadApp": "Download App",
+      "developer": "Developer Settings"
+    },
+    "userBadges": {
+      "dhStaff": "DogeHouse Staff",
+      "dhContributor": "DogeHouse Contributor"
+    },
+    "messagesDropdown": {
+      "title": "Messages",
+      "showMore": "Show More",
+      "noMessages": "No new messages"
     }
   },
   "modules": {
@@ -217,6 +353,11 @@
         "roomName": "ĉambronomo",
         "roomDescription": "Priskribo",
         "minLength": "minimuma longo 2"
+      },
+      "tommorow": "TOMMOROW",
+      "today": "TODAY",
+      "deleteModal": {
+        "areYouSure": "Are you sure you want to delete this scheduled room?"
       }
     },
     "roomChat": {
@@ -230,7 +371,13 @@
       "sendMessage": "Sendu Mesaĝon",
       "whisper": "Flustro",
       "welcomeMessage": "Bonvenon babili!",
-      "roomDescription": "ĉambra priskribo"
+      "roomDescription": "ĉambra priskribo",
+      "disabled": "room chat has been disabled",
+      "messageDeletion": {
+        "message": "message",
+        "retracted": "retracted",
+        "deleted": "deleted"
+      }
     },
     "roomStatus": {
       "fuelingRocket": "Brulaĵo raketo",
@@ -243,6 +390,7 @@
       "approachingGalaxy": "Alproksimiĝanta galaksio",
       "galacticDoge": "Galaksia Doge",
       "spottedLife": "Planedo kun vivo ekvidita"
-    }
+    },
+    "feed": { "yourFeed": "Your Feed" }
   }
 }

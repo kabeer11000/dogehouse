@@ -1,17 +1,22 @@
 import React from "react";
 import { BoxedIcon } from "./BoxedIcon";
-import { SolidFullscreen, SolidMicrophone } from "../icons";
-import { useRouter } from "next/router";
+import {
+  SolidDeafened,
+  SolidDeafenedOff,
+  SolidFullscreen,
+  SolidMicrophone,
+} from "../icons";
 import { Button } from "./Button";
 import { DurationTicker } from "./DurationTicker";
 import SvgSolidMicrophoneOff from "../icons/SolidMicrophoneOff";
+import { useTypeSafeTranslation } from "../shared-hooks/useTypeSafeTranslation";
 
-interface MinimizedRoomCardProps {
+export interface MinimizedRoomCardProps {
+  onFullscreenClick?: () => void;
   leaveLoading?: boolean;
   room: {
     name: string;
     speakers: string[];
-    url: string;
     roomStartedAt: Date;
     myself: {
       isSpeaker: boolean;
@@ -25,50 +30,75 @@ interface MinimizedRoomCardProps {
 }
 
 export const MinimizedRoomCard: React.FC<MinimizedRoomCardProps> = ({
+  onFullscreenClick,
   leaveLoading,
   room,
 }) => {
-  const router = useRouter();
-
+  const { t } = useTypeSafeTranslation();
+  // gap-n only works with grid
   return (
-    <div className="bg-primary-800 border border-accent rounded-lg p-4 gap-4 flex-col w-full">
-      <div className="gap-2 flex-col">
-        <h4 className="text-primary-100 ">{room.name}</h4>
-        <p className="text-primary-300">{room.speakers.join(", ")}</p>
-        <p className="text-accent">
-          {room.myself.isSpeaker ? "Speaker" : "Listener"} ·{" "}
-          <DurationTicker dt={room.roomStartedAt} />
-        </p>
+    <div
+      className="bg-primary-800 border border-accent rounded-lg p-4 gap-4 grid max-w-md w-full"
+      data-testid="minimized-room-card"
+    >
+      <div className="gap-1 grid">
+        <h4 className="text-primary-100 break-all overflow-hidden">
+          {room.name}
+        </h4>
+        <div className="text-primary-300 overflow-ellipsis overflow-hidden w-auto">
+          {room.speakers.join(", ")}
+        </div>
+        <div className="text-accent">
+          {room.myself.isSpeaker
+            ? t("components.bottomVoiceControl.speaker")
+            : t("components.bottomVoiceControl.listener")}{" "}
+          · <DurationTicker dt={room.roomStartedAt} />
+        </div>
       </div>
-      <div className="gap-4">
-        <div className="gap-2">
+      <div className="flex flex-row">
+        <div className="grid grid-cols-3 gap-2">
+          {room.myself.isSpeaker ? (
+            <BoxedIcon
+              data-testid="mute"
+              transition
+              hover={room.myself.isMuted}
+              onClick={room.myself.switchMuted}
+              className={
+                !room.myself.isMuted && !room.myself.isDeafened
+                  ? "bg-accent hover:bg-accent-hover text-button"
+                  : ""
+              }
+            >
+              {room.myself.isMuted || room.myself.isDeafened ? (
+                <SvgSolidMicrophoneOff />
+              ) : (
+                <SolidMicrophone />
+              )}
+            </BoxedIcon>
+          ) : null}
           <BoxedIcon
-            onClick={room.myself.switchMuted}
-            className={room.myself.isMuted ? "bg-accent" : ""}
-          >
-            {room.myself.isMuted ? (
-              <SvgSolidMicrophoneOff />
-            ) : (
-              <SolidMicrophone />
-            )}
-          </BoxedIcon>
-          {/* @todo haven't added deafen yet */}
-          {/* <BoxedIcon
+            data-testid="deafen"
             onClick={room.myself.switchDeafened}
-            className={room.myself.isDeafened ? "bg-accent" : ""}
+            className={
+              room.myself.isDeafened
+                ? "bg-accent hover:bg-accent-hover text-button"
+                : ""
+            }
           >
-            <SolidVolume />
-          </BoxedIcon> */}
-          <BoxedIcon onClick={() => router.push(room.url)}>
+            {room.myself.isDeafened ? <SolidDeafenedOff /> : <SolidDeafened />}
+          </BoxedIcon>
+          <BoxedIcon transition onClick={onFullscreenClick}>
             <SolidFullscreen />
           </BoxedIcon>
         </div>
         <Button
+          transition
+          color="primary-300"
           loading={leaveLoading}
-          className="flex-grow"
+          className="flex-grow ml-4"
           onClick={room.myself.leave}
         >
-          Leave
+          {t("components.bottomVoiceControl.leave")}
         </Button>
       </div>
     </div>

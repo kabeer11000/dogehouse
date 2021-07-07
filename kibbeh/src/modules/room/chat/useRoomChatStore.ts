@@ -25,12 +25,18 @@ interface EmoteToken {
   v: string;
 }
 
+interface EmojiToken {
+  t: "emoji";
+  v: string;
+}
+
 export type RoomChatMessageToken =
   | TextToken
   | MentionToken
   | LinkToken
   | BlockToken
-  | EmoteToken;
+  | EmoteToken
+  | EmojiToken;
 
 const colors = [
   "#ff2366",
@@ -68,14 +74,20 @@ export interface RoomChatMessage {
 export const useRoomChatStore = create(
   combine(
     {
-      open: true,
+      open: false,
       bannedUserIdMap: {} as Record<string, boolean>,
       messages: [] as RoomChatMessage[],
       newUnreadMessages: false,
       message: "" as string,
       isRoomChatScrolledToTop: false,
+      frozen: false,
     },
     (set) => ({
+      unbanUser: (userId: string) =>
+        set(({ bannedUserIdMap: { [userId]: _, ...banMap }, ...s }) => ({
+          messages: s.messages.filter((m) => m.userId !== userId),
+          bannedUserIdMap: banMap,
+        })),
       addBannedUser: (userId: string) =>
         set((s) => ({
           messages: s.messages.filter((m) => m.userId !== userId),
@@ -86,9 +98,9 @@ export const useRoomChatStore = create(
           newUnreadMessages: !s.open,
           messages: [
             { ...m, color: generateColorFromString(m.userId) },
-            ...(s.messages.length > 100
-              ? s.messages.slice(0, 100)
-              : s.messages),
+            ...(s.messages.length <= 100 || s.frozen
+              ? s.messages
+              : s.messages.slice(0, 100)),
           ],
         })),
       setMessages: (messages: RoomChatMessage[]) =>
@@ -105,7 +117,7 @@ export const useRoomChatStore = create(
         set({
           messages: [],
           newUnreadMessages: false,
-          open: false,
+          message: "",
           bannedUserIdMap: {},
         }),
       toggleOpen: () =>
@@ -133,6 +145,7 @@ export const useRoomChatStore = create(
         set({
           isRoomChatScrolledToTop,
         }),
+      toggleFrozen: () => set((s) => ({ frozen: !s.frozen })),
     })
   )
 );

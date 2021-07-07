@@ -1,0 +1,396 @@
+{
+  "_comment": "if you change this file, do: yarn i18",
+  "common": {
+    "loadMore": "Ko'proq yuklash",
+    "loading": "Yuklanmoqda...",
+    "noUsersFound": "Foydalanuvchilar topilmadi",
+    "ok": "ОК",
+    "yes": "Ha",
+    "no": "Yo'q",
+    "cancel": "Bekor qilish",
+    "save": "Saqlash",
+    "edit": "Tahrirlash",
+    "delete": "O'chirish",
+    "joinRoom": "Xonaga qo'shilish",
+    "copyLink": "Havolani nusxalash",
+    "copied": "Nusxalandi",
+    "formattedIntlDate": "{{date, intlDate}}",
+    "formattedIntlTime": "{{time, intlTime}}",
+    "requestPermissions": "DogeHouse da kirish ruxsatisiz ishlash kutilmagan xatolarga olib kelishi mumkin",
+    "copy": "Copy",
+    "error": "Error"
+  },
+  "header": {
+    "_comment": "Main Header UI Internationalization Strings",
+    "title": "DogeHouse",
+    "mutedTitle": "Tovushsiz | DogeHouse",
+    "deafenedTitle": "Deafened | DogeHouse",
+    "dashboard": "Dashboard",
+    "connectionTaken": "Connection Taken"
+  },
+  "footer": {
+    "_comment": "Main Footer UI Internationalization Strings",
+    "link_1": "Yaratilish tarixi",
+    "link_2": "Discord",
+    "link_3": "Xato haqida xabar berish"
+  },
+  "pages": {
+    "_comment": "Respective Page UI Internationalization Strings",
+    "admin": {
+      "ban": "taqiqlash",
+      "userStaffandContrib": "User Staff & Contributions",
+      "staff": "Staff: ",
+      "contributions": "Contributions",
+      "username": "Username",
+      "usrStaff": "User Staff",
+      "usrContributions": "User Contributions",
+      "reason": "reason",
+      "usernamePlaceholder": "username to perform actions on"
+    },
+    "followingOnlineList": {
+      "listHeader": "Yopiq xonada bo'lmagan va siz obuna bo'lgan foydalanuvchilar ro'yxati.",
+      "currentRoom": "Hozirgi xona",
+      "startPrivateRoom": "Maxsus xona yarating",
+      "title": "People"
+    },
+    "followList": {
+      "followHim": "Obuna bo'lish",
+      "followingHim": "Obunachisiz ",
+      "title": "People",
+      "followingNone": "Not following anyone",
+      "noFollowers": "No followers"
+    },
+    "home": {
+      "createRoom": "Xona yaratish",
+      "refresh": "Yangilash",
+      "editRoom": "Xonani tahrirlash",
+      "desktopAlert": "Download the DogeHouse desktop app today!"
+    },
+    "inviteList": {
+      "roomGone": "Xona yo'q, orqaga qayting",
+      "shareRoomLink": "Xona bilan bog'lanishni baham ko'ring",
+      "inviteFollowers": "Siz hozirda onlayn bo'lgan izdoshlaringizni taklif qilishingiz mumkin:",
+      "whenFollowersOnline": "Sizning izdoshlaringiz onlayn bo'lsa, ular bu yerda ko'rsatiladi."
+    },
+    "login": {
+      "headerText": "Oyga ovozli aloqani ko'taramiz 🚀",
+      "featureText_1": "Qora qoplama",
+      "featureText_2": "Ochiq ro'yxatdan o'tish",
+      "featureText_3": "Krossplatformaviy",
+      "featureText_4": "Ochiq manba",
+      "featureText_5": "Matnli chat",
+      "featureText_6": "Doge tomonidan quvvatlanadi",
+      "loginGithub": "GitHub orqali kirish",
+      "loginTwitter": "Twitter orqali kirish",
+      "createTestUser": "Sinov foydalanuvchisini yarating",
+      "loginDiscord": "Login with Discord"
+    },
+    "myProfile": {
+      "logout": "Chiqish",
+      "probablyLoading": "Menimcha yuklanmoqda...",
+      "voiceSettings": "Ovoz sozlamalari",
+      "soundSettings": "Tovush sozlamalari",
+      "deleteAccount": "Akkauntni o'chirish",
+      "overlaySettings": "Qoplama sozlamalari",
+      "couldNotFindUser": "Kechirasiz, biz bu foydalanuvchini topa olmadik",
+      "privacySettings": "Privacy settings"
+    },
+    "notFound": {
+      "whoopsError": "Afsuski! Ushbu sahifa yo'qolgan.",
+      "goHomeMessage": "Xavotir olmang. Siz ",
+      "goHomeLinkText": "uyga qayta olasiz"
+    },
+    "room": {
+      "speakers": "Hangomachilar",
+      "requestingToSpeak": "Gapirishni istaganlar",
+      "listeners": "tinglovchilar",
+      "allowAll": "Barchaga ruxsat berish",
+      "allowAllConfirm": "Ishonchingiz komilmi? Bu {{count}} foydalanuvchilariga gapirish uchun ruxsat so'rab murojaat qilganlarga gapirishga imkon beradi"
+    },
+    "searchUser": { "search": "Qidirish..." },
+    "soundEffectSettings": {
+      "header": "Tovushlar",
+      "title": "Sound Settings",
+      "playSound": "Play Sound"
+    },
+    "viewUser": {
+      "editProfile": "Profilni tahrirlash",
+      "followsYou": "Obunachilaringiz",
+      "followers": "Obunachilar",
+      "following": "Obuna",
+      "followHim": "Obuna bo'lish",
+      "followingHim": "Obunachisiz",
+      "copyProfileUrl": "Profil URL manzilini nusxalash",
+      "urlCopied": "Profil URL nusxasi ko'chirildi",
+      "unfollow": "Obunani bekor qilish",
+      "about": "About",
+      "bot": "Bot",
+      "profileTabs": {
+        "about": "About",
+        "rooms": "Rooms",
+        "scheduled": "Scheduled",
+        "recorded": "Recorded",
+        "clips": "Clips",
+        "admin": "Admin"
+      },
+      "block": "Block",
+      "unblock": "Unblock",
+      "sendDM": "Send DM",
+      "aboutSuffix": "",
+      "errors": {
+        "blocked": "This user has blocked you.",
+        "default": "Whoops! We couldn't load this user."
+      }
+    },
+    "voiceSettings": {
+      "header": "Ovoz Sozlamalari",
+      "mic": "Mikrofon:",
+      "permissionError": "Mikrofon topilmadi, ulanmagan yoki brauzerga tegishli ruxsat berilmagan.",
+      "refresh": "Mikrofonlar ro'yxatini yangilash",
+      "volume": "Tovush:",
+      "title": "Voice Settings"
+    },
+    "overlaySettings": {
+      "header": "Qoplama Sozlamalari",
+      "input": {
+        "errorMsg": "Ilova nomi noto‘g‘ri",
+        "label": "Ilova nomini kiriting"
+      }
+    },
+    "download": {
+      "starting": "Starting download...",
+      "failed": "Could not auto-download, please try again later",
+      "visit_gh": "Visit Github Releases",
+      "prompt": "Click on the button below to start download",
+      "download_now": "Download Now",
+      "download_for": "Download for %platform% (%ext%)"
+    },
+    "privacySettings": {
+      "title": "Privacy Settings",
+      "header": "Privacy Settings",
+      "whispers": { "label": "Whispers", "on": "On", "off": "Off" }
+    },
+    "botEdit": {
+      "yourBots": "Your Bots",
+      "bots": "Bots",
+      "title": "Bot Information",
+      "apiKey": "ApiKey",
+      "regenerate": "Regenerate",
+      "reveal": "Click to reveal ApiKey"
+    }
+  },
+  "components": {
+    "_comment": "Component UI Internationalization Strings",
+    "avatar": {},
+    "backBar": {},
+    "blockedFromRoomUsers": {
+      "header": "Bloklangan foydalanuvchilar",
+      "unban": "Unblock qilish",
+      "noBans": "Hali hech kim taqiqlanmagan"
+    },
+    "bottomVoiceControl": {
+      "leaveCurrentRoomBtn": "Xonani tark etish",
+      "confirmLeaveRoom": "Haqiqatan ham tizimdan chiqishni xohlaysizmi?",
+      "leave": "Chiqish",
+      "inviteUsersToRoomBtn": "Foydalanuvchilarni xonaga taklif qilish",
+      "invite": "Taklif qilish",
+      "toggleMuteMicBtn": "Mikrofondi yoqish",
+      "mute": "Ovozni o'chirish",
+      "unmute": "Ovozni yoqish",
+      "makeRoomPublicBtn": "Xonani ochiq qiling!",
+      "settings": "sozlamalar",
+      "speaker": "Gapiruvchi",
+      "listener": "Tinglovchi",
+      "chat": "Chat",
+      "toggleDeafMicBtn": "Toggle Deafen",
+      "deafen": "Deafen",
+      "undeafen": "Undeafen"
+    },
+    "deviceNotSupported": {
+      "notSupported": "Qurilmangiz qo'llab-quvvatlanmaydi. Siz ",
+      "linkText": "GitHub orqali so'rov",
+      "addSupport": " yaratishingiz mumkin va biz sizning qurilmangizni qo'shishga harakat qilamiz."
+    },
+    "inviteButton": {
+      "invited": "Taklif qilindi!",
+      "inviteToRoom": "Xonaga taklif qilish"
+    },
+    "micPermissionBanner": {
+      "permissionDenied": "Mikrofoningizga kirish imkonsiz (ehtimol brauzer sozlamalariga o'ting yoki sahifani qayta yuklang)",
+      "dismiss": "Rad etish",
+      "tryAgain": "Qayta urinib ko'rish"
+    },
+    "keyboardShortcuts": {
+      "setKeybind": "Keybind tayinlash",
+      "listening": "Tinglayabsiz...",
+      "toggleMuteKeybind": "Bosilganda mikrofonni faollashtirish",
+      "togglePushToTalkKeybind": "Raciya rejimini yoqing",
+      "toggleOverlayKeybind": "Keybind almashtirish tugmachasini biriktirish",
+      "toggleDeafKeybind": "Toggle deafen keybind"
+    },
+    "userVolumeSlider": { "noAudioMessage": "Audio yo'q" },
+    "addToCalendar": { "add": "Taqvimga qo'shish" },
+    "wsKilled": {
+      "description": "Veb-server server tomonidan o'chirildi. Bu odatda saytni boshqa yorliqda ochganda yuz beradi.",
+      "reconnect": "Qayta qo'shilish"
+    },
+    "search": {
+      "placeholder": "Xonalarni, foydalanuvchilarni yoki toifalarni qidirish",
+      "placeholderShort": "Search"
+    },
+    "settingsDropdown": {
+      "profile": "Profil",
+      "language": "Til",
+      "reportABug": "Xato haqida xabar berish",
+      "useOldVersion": "Eski versiyadan foydalanish",
+      "logOut": {
+        "button": "Chiqish",
+        "modalSubtitle": "Chiqishga ishonchingiz komilmi?"
+      },
+      "debugAudio": {
+        "debugAudio": "Debug Audio",
+        "stopDebugger": "Stop Debugger"
+      },
+      "downloadApp": "Download App",
+      "developer": "Developer Settings"
+    },
+    "modals": {
+      "createRoomModal": {
+        "public": "umumiy",
+        "private": "xususiy",
+        "roomName": "xona nomi",
+        "roomDescription": "xona tavsifi",
+        "descriptionError": "maksimal uzunligi 500",
+        "nameError": "uzunligi 2 dan 60 ta belgidan iborat bo'lishi kerak",
+        "subtitle": "Yangi xonani boshlash uchun quyidagi maydonlarni to'ldiring"
+      },
+      "invitedToJoinRoomModal": {
+        "newRoomCreated": "Yangi xona yaratildi",
+        "roomInviteFrom": "Taklifnoma tomon",
+        "justStarted": "Ular endi boshladilar",
+        "likeToJoin": ", qo'shilishni xohlaysizmi?",
+        "inviteReceived": "sizni taklif qilishdi"
+      },
+      "editProfileModal": {
+        "usernameTaken": "foydalanuvchi nomi olingan",
+        "avatarUrlError": "Noto'g'ri rasm",
+        "avatarUrlLabel": "GitHub / Twitter-dan avatar URL-manzili",
+        "displayNameError": "uzunligi 2 dan 50 gacha bo'lgan belgilar",
+        "displayNameLabel": "Ommaviy ism",
+        "usernameError": "Uzunligi 4 dan 15 gacha bo'lgan belgilar, alfasayısal va faqat pastki chiziq bilan belgilanadi",
+        "usernameLabel": "Foydalanuvchi nomi",
+        "bioError": "maksimal uzunligi 160 belgi",
+        "bioLabel": "Men haqimda",
+        "bannerUrlLabel": "Twitter banner URL"
+      },
+      "profileModal": {
+        "blockUserConfirm": "Haqiqatan ham ushbu foydalanuvchi sizning xonalaringizga kirishiga to'sqinlik qilmoqchimisiz?",
+        "blockUser": "foydalanuvchini bloklash",
+        "makeMod": "moderator sifatida tayinlash",
+        "unmod": "moderatorlikdan mahrum qilish",
+        "addAsSpeaker": "Gapiruvchi sifatida qo'shish",
+        "moveToListener": "tinglovchilarga o'tkazish",
+        "banFromChat": "ushbu suhbatdan taqiqlash",
+        "banFromRoom": "ushbu xonadan taqiqlash",
+        "goBackToListener": "tinglovchiga aylanish",
+        "deleteMessage": "Xatni o'chirish",
+        "makeRoomCreator": "xonani admini qilish",
+        "unBanFromChat": "Unban from Chat",
+        "banIPFromRoom": "Ban IP from Room"
+      },
+      "roomSettingsModal": {
+        "requirePermission": "bu erda gapirish uchun ruxsat talab qilinadi",
+        "makePublic": "xonani umumiy qilish",
+        "makePrivate": "xonani xususiy qilish",
+        "renamePublic": "Umumiy xonani qayta nomlash",
+        "renamePrivate": "Xususiy xonani qayta nomlash",
+        "chatDisabled": "disable chat",
+        "chatCooldown": "Chat Cooldown (milliseconds)",
+        "chat": {
+          "label": "Chat",
+          "enabled": "Enabled",
+          "disabled": "Disabled",
+          "followerOnly": "Follower Only"
+        }
+      },
+      "createBotModal": {
+        "usernameTaken": "Username is taken",
+        "subtitle": "Please fill the details below to create your bot",
+        "title": "Create Bot"
+      }
+    },
+    "followingOnline": {
+      "people": "Odamlar",
+      "online": "ONLAYN",
+      "noOnline": "Barcha do'stlaringiz offlayn",
+      "showMore": "Ko'proq ko'rsatish"
+    },
+    "upcomingRoomsCard": {
+      "upcomingRooms": "Yaqinlashib kelayotgan xonalar",
+      "exploreMoreRooms": "Boshqa xonalarni izlanish"
+    },
+    "userBadges": {
+      "dhStaff": "DogeHouse Staff",
+      "dhContributor": "DogeHouse Contributor"
+    },
+    "messagesDropdown": {
+      "title": "Messages",
+      "showMore": "Show More",
+      "noMessages": "No new messages"
+    }
+  },
+  "modules": {
+    "_comment": "Modules UI Internationalization Strings",
+    "feed": { "yourFeed": "Sizning tasmangiz" },
+    "scheduledRooms": {
+      "title": "Rejalashtirilgan xonalar",
+      "noneFound": "topilmadi",
+      "allRooms": "barcha rejalashtirilgan xonalar",
+      "myRooms": "mening rejalashtirilgan xonalarim",
+      "scheduleRoomHeader": "Rejalashtirilgan xonalar",
+      "startRoom": "xona ochish",
+      "modal": {
+        "needsFuture": "kelajakda paydo bo'lishi kerak",
+        "roomName": "xona nomi",
+        "roomDescription": "Tavsif",
+        "minLength": "minimal uzunlik 2"
+      },
+      "tommorow": "TOMMOROW",
+      "today": "TODAY",
+      "deleteModal": {
+        "areYouSure": "Are you sure you want to delete this scheduled room?"
+      }
+    },
+    "roomChat": {
+      "title": "Chat",
+      "emotesSoon": "[yaqinda emoji]",
+      "bannedAlert": "Siz ushbu suhbatdan bloklangansiz",
+      "waitAlert": "Keyingi xabarni yuborishdan oldin yana bir soniya kuting",
+      "search": "Qidirish",
+      "searchResults": "Qidiruv natijalari",
+      "recent": "Yaqindagilar",
+      "sendMessage": "Xat yuborish",
+      "whisper": "Pichirlash",
+      "welcomeMessage": "Suhbatga xush kelibsiz!",
+      "roomDescription": "xona tavsifi",
+      "disabled": "room chat has been disabled",
+      "messageDeletion": {
+        "message": "message",
+        "retracted": "retracted",
+        "deleted": "deleted"
+      }
+    },
+    "roomStatus": {
+      "fuelingRocket": "raketaga yonilg'i quyilmoqda",
+      "takingOff": "dvigatellar ishga tushirldi",
+      "inSpace": "Fazoda",
+      "approachingMoon": "oyga yaqinlashmoqdamiz",
+      "lunarDoge": "Oyjon Doge",
+      "approachingSun": "quyoshga yaqinlashmoqdamiz",
+      "solarDoge": "Quyoshjon Doge",
+      "approachingGalaxy": "galaktikaga yaqinlashmoqdamiz",
+      "galacticDoge": "Galaktik Doge",
+      "spottedLife": "hayot mavjud bo'lgan sayyora aniqlandi"
+    }
+  }
+}

@@ -1,26 +1,21 @@
 import React from "react";
 import { PageComponent } from "../../types/PageComponent";
 import { WaitForWsAndAuth } from "../auth/WaitForWsAndAuth";
-import { DesktopLayout } from "../layouts/DesktopLayout";
-import { LeftPanel, MiddlePanel, RightPanel } from "../layouts/GridPanels";
+import { HeaderController } from "../display/HeaderController";
+import { DefaultDesktopLayout } from "../layouts/DefaultDesktopLayout";
 import { FeedController } from "./FeedController";
-import { FollowingOnlineController } from "./FollowingOnlineController";
-import { ProfileBlockController } from "./ProfileBlockController";
+import { useTypeSafeTranslation } from "../../shared-hooks/useTypeSafeTranslation";
 
 interface LoungePageProps {}
 
 export const DashboardPage: PageComponent<LoungePageProps> = ({}) => {
+  const { t } = useTypeSafeTranslation();
   return (
     <WaitForWsAndAuth>
-      <DesktopLayout>
-        <LeftPanel>
-          <FollowingOnlineController />
-        </LeftPanel>
+      <HeaderController embed={{}} title={t("header.dashboard")} />
+      <DefaultDesktopLayout>
         <FeedController />
-        <RightPanel>
-          <ProfileBlockController />
-        </RightPanel>
-      </DesktopLayout>
+      </DefaultDesktopLayout>
     </WaitForWsAndAuth>
   );
 };

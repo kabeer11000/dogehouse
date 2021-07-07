@@ -1,36 +1,37 @@
+import { Room } from "@dogehouse/kebab";
 import React from "react";
+import { BubbleText } from "../../BubbleText";
+import { formatNumber } from "../../RoomCard";
 
 export interface RoomSearchResultProps {
-  room: {
-    id: string;
-    displayName: string;
-    hosts: string[];
-    userCount: number;
-  };
+  room: Room;
+  className?: string;
+  onClick?: () => void;
 }
 
-export const RoomSearchResult: React.FC<RoomSearchResultProps> = ({ room }) => {
+export const RoomSearchResult: React.FC<RoomSearchResultProps> = ({
+  room,
+  className = "",
+  onClick = () => undefined,
+}) => {
   return (
-    <div className="cursor-pointer hover:bg-primary-700 px-4 py-3 w-full">
-      <div className="flex-col w-full">
-        <div className="w-full">
-          <span
-            className="text-primary-100 font-bold flex-1 items-center"
-            style={{ lineHeight: "22px" }}
-          >
-            {room.displayName}
+    <div
+      className={`flex cursor-pointer hover:bg-primary-700 px-4 py-3 w-full rounded-8 ${className}`}
+      onClick={onClick}
+    >
+      <div className="flex flex-col w-full">
+        <div className="flex w-full">
+          <span className="text-primary-100 font-bold flex-1 items-center">
+            {room.name}
           </span>
-          <span className="items-center">
-            <span
-              className="rounded-full inline-block bg-accent mr-1"
-              style={{ width: "8px", height: "8px" }}
-            />
-            <span className="text-primary-200 font-bold">{room.userCount}</span>
-          </span>
+          <BubbleText live>{formatNumber(room.numPeopleInside)}</BubbleText>
         </div>
-        <span className="text-primary-300 text-sm">
-          {room.hosts.slice(0, 2).join(", ")}
-        </span>
+        {/* <span className="text-primary-300">
+          {room.hosts
+            .slice(0, 3)
+            .map((x) => x.displayName)
+            .join(", ")}
+        </span> */}
       </div>
     </div>
   );

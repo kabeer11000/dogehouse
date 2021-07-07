@@ -1,30 +1,29 @@
+import { User } from "@dogehouse/kebab";
 import React from "react";
 import { SingleUser } from "../../UserAvatar";
 
 export interface UserSearchResultProps {
-  user: {
-    id: string;
-    username: string;
-    displayName: string;
-    isOnline: boolean;
-    avatar: string;
-  };
+  user: User;
+  className?: string;
+  onClick?: () => void;
 }
 
-export const UserSearchResult: React.FC<UserSearchResultProps> = ({ user }) => {
+export const UserSearchResult: React.FC<UserSearchResultProps> = ({
+  user,
+  className = "",
+  onClick = () => undefined,
+}) => {
   return (
-    <div className="cursor-pointer hover:bg-primary-700 px-4 py-3 w-full">
-      <div className="mr-3">
-        <SingleUser isOnline={user.isOnline} src={user.avatar} size="sm" />
+    <div
+      className={`flex cursor-pointer hover:bg-primary-700 px-4 py-3 w-full rounded-8 ${className}`}
+      onClick={onClick}
+    >
+      <div className="flex mr-3">
+        <SingleUser isOnline={user.online} src={user.avatarUrl} size="md" />
       </div>
-      <div className="flex-col">
-        <span
-          className="text-primary-100 font-bold"
-          style={{ lineHeight: "22px" }}
-        >
-          {user.displayName}
-        </span>
-        <span className="text-primary-300 text-sm">{user.username}</span>
+      <div className="flex flex-col">
+        <span className="text-primary-100 font-bold">{user.displayName}</span>
+        <span className="text-primary-300">@{user.username}</span>
       </div>
     </div>
   );

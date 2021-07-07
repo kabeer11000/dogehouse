@@ -12,7 +12,7 @@ export const MobileNavContainer: React.FC<MobileNavContainerProps> = ({
 }) => {
   return (
     <div
-      className={`fixed md:hidden  inset-x-0 flex justify-around items-center bottom-0 w-full h-7 bg-primary-900 border-t border-primary-700 ${className}`}
+      className={`flex fixed inset-x-0 justify-around items-center bottom-0 w-full h-7 bg-primary-900 border-t border-primary-700 ${className}`}
     >
       {children}
     </div>
@@ -28,11 +28,11 @@ export const MobileNavItem: React.FC<MobileNavItemProps> = ({
   targetPath,
 }) => {
   const router = useRouter();
-  const isActive = router ? router.pathname.includes(targetPath) : false;
+  const isActive = router ? router.asPath.includes(targetPath) : false;
 
   return (
     <Link href={targetPath}>
-      <div className="cursor-pointer">
+      <div className="flex cursor-pointer">
         {children &&
           React.Children.map(children, (child) => {
             return React.cloneElement(child as React.ReactElement, {
@@ -56,6 +56,12 @@ export interface MobileNavProps {
 }
 
 export const MobileNav: React.FC<MobileNavProps> = ({ items }) => {
+  const { asPath } = useRouter();
+
+  if (asPath.startsWith("/room")) {
+    return null;
+  }
+
   return (
     <MobileNavContainer>
       {items.map((item) => {

@@ -1,36 +1,52 @@
+import isElectron from "is-electron";
 import React, { FC, useContext } from "react";
-import { GridPanel } from "../../ui/GridPanel";
-import { LeftHeader } from "../../ui/header/LeftHeader";
-import { RightHeader } from "../../ui/header/RightHeader";
-import { MiddleHeaderController } from "../search/MiddleHeaderController";
+import { useIsElectronMobile } from "../../global-stores/useElectronMobileStore";
+import { useHostStore } from "../../global-stores/useHostStore";
+import { useScreenType } from "../../shared-hooks/useScreenType";
+import { FixedGridPanel, GridPanel } from "../../ui/GridPanel";
+import LeftHeader from "../../ui/header/LeftHeader";
+import { MiddleHeader } from "../../ui/header/MiddleHeader";
+import RightHeader from "../../ui/header/RightHeader";
 import { WebSocketContext } from "../ws/WebSocketProvider";
 
 interface LeftPanelProps {}
 
 const HeaderWrapper: FC = ({ children }) => (
-  <div className={`mb-7 h-6 items-center`}>{children}</div>
+  <div className={`flex mb-7 h-6 items-center`}>{children}</div>
 );
 
 export const LeftPanel: React.FC<LeftPanelProps> = ({ children }) => {
   return (
-    <GridPanel>
+    <FixedGridPanel>
       <HeaderWrapper>
         <LeftHeader />
       </HeaderWrapper>
       {children}
-    </GridPanel>
+    </FixedGridPanel>
   );
 };
 
 export const MiddlePanel: React.FC<
   LeftPanelProps & { stickyChildren?: React.ReactNode }
 > = ({ stickyChildren, children }) => {
+  const screenType = useScreenType();
   return (
-    <GridPanel scroll>
-      <div className="sticky top-0 w-full flex-col z-10 bg-primary-900 pt-5">
-        <HeaderWrapper>
-          <MiddleHeaderController />
-        </HeaderWrapper>
+    <GridPanel>
+      <div
+        className={
+          !(screenType === "fullscreen" && !stickyChildren)
+            ? `flex sticky w-full flex-col z-10 bg-primary-900 pt-5`
+            : ""
+        }
+        style={useIsElectronMobile() ? { marginTop: "45px" } : { top: "0px" }}
+      >
+        {screenType !== "fullscreen" ? (
+          <HeaderWrapper>
+            <MiddleHeader />
+          </HeaderWrapper>
+        ) : (
+          ""
+        )}
         {stickyChildren}
       </div>
       {children}
@@ -41,11 +57,9 @@ export const MiddlePanel: React.FC<
 export const RightPanel: React.FC<LeftPanelProps> = ({ children }) => {
   const { conn } = useContext(WebSocketContext);
   return (
-    <GridPanel>
-      <HeaderWrapper>
-        {conn ? <RightHeader avatarImg={conn.user.avatarUrl} /> : null}
-      </HeaderWrapper>
+    <FixedGridPanel>
+      <HeaderWrapper>{conn ? <RightHeader /> : null}</HeaderWrapper>
       {children}
-    </GridPanel>
+    </FixedGridPanel>
   );
 };

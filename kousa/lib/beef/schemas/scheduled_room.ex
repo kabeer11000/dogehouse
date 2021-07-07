@@ -12,7 +12,7 @@ defmodule Beef.Schemas.ScheduledRoom do
           scheduledFor: DateTime.t()
         }
 
-  @derive {Poison.Encoder,
+  @derive {Jason.Encoder,
            only: [
              :id,
              :name,
@@ -23,6 +23,7 @@ defmodule Beef.Schemas.ScheduledRoom do
              :creator,
              :creatorId
            ]}
+
   @primary_key {:id, :binary_id, []}
   schema "scheduled_rooms" do
     field(:name, :string)
@@ -53,13 +54,13 @@ defmodule Beef.Schemas.ScheduledRoom do
   def validate_not_too_far_into_future_date(%{changes: changes} = changeset, field) do
     if date = changes[field] do
       # 1 extra day to avoid conflicts with frontend
-      max_date = DateTime.utc_now() |> Timex.shift(months: 1, days: 1)
+      max_date = DateTime.utc_now() |> Timex.shift(months: 6, days: 1)
 
       if DateTime.compare(date, max_date) == :lt do
         changeset
       else
         changeset
-        |> add_error(field, "Date can't be further than 1 month in advance")
+        |> add_error(field, "Date can't be further than 6 month in advance")
       end
     else
       changeset

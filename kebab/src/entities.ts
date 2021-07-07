@@ -8,25 +8,30 @@ export type RoomPeer = {
 };
 
 export type UserPreview = {
-  numFollowers: number;
   id: UUID;
   displayName: string;
+  numFollowers: number;
+  avatarUrl: string | null;
 };
 
-export type Room = {
-  id: string;
+export type ChatMode = "default" | "disabled" | "follower_only";
+
+export type RoomDetails = {
   name: string;
-  description?: string;
+  chatThrottle: number;
   isPrivate: boolean;
+  description: string;
+};
+
+export type Room = RoomDetails & {
+  id: string;
   numPeopleInside: number;
   voiceServerId: string;
   creatorId: string;
-  peoplePreviewList: Array<{
-    id: string;
-    displayName: string;
-    numFollowers: number;
-  }>;
+  peoplePreviewList: Array<UserPreview>;
+  autoSpeaker: boolean;
   inserted_at: string;
+  chatMode: ChatMode;
 };
 
 export interface ScheduledRoom {
@@ -37,23 +42,28 @@ export interface ScheduledRoom {
   name: string;
   id: UUID;
   creatorId: UUID;
+  creator: User;
 }
 
 export type User = {
   youAreFollowing?: boolean;
   username: string;
-  roomPermissions?: unknown;
   online: boolean;
   numFollowing: number;
   numFollowers: number;
   lastOnline: string;
   id: UUID;
   followsYou?: boolean;
+  botOwnerId?: string | null;
+  contributions: number;
+  staff: boolean;
   displayName: string;
-  currentRoomId?: UUID;
+  currentRoomId?: UUID | null;
   currentRoom: Room;
-  bio: string;
+  bio: string | null;
   avatarUrl: string;
+  bannerUrl: string | null;
+  whisperPrivacySetting: "on" | "off";
 };
 
 export type MessageToken<T extends string = string, V = unknown> = {
@@ -65,6 +75,8 @@ export type TextToken = MessageToken<"text", string>;
 export type MentionToken = MessageToken<"mention", string>;
 export type LinkToken = MessageToken<"link", string>;
 export type EmoteToken = MessageToken<"emote", string>;
+export type CodeBlockToken = MessageToken<"block", string>;
+export type EmojiToken = MessageToken<"emoji", string>;
 
 export type Message = {
   id: UUID;
@@ -73,6 +85,7 @@ export type Message = {
   color: string;
   displayName: string;
   tokens: MessageToken[];
+  username: string;
   deleted?: boolean;
   deleterId?: UUID;
   sentAt: string;
@@ -87,14 +100,13 @@ export type BaseUser = {
   bio: string;
   displayName: string;
   avatarUrl: string;
+  bannerUrl: string;
   numFollowing: number;
   numFollowers: number;
   currentRoom?: Room;
-};
-
-export type PaginatedBaseUsers = {
-  users: BaseUser[];
-  nextCursor: number | null;
+  botOwnerId?: string;
+  contributions: number;
+  staff: boolean;
 };
 
 export type RoomPermissions = {
@@ -106,6 +118,7 @@ export type RoomPermissions = {
 export type UserWithFollowInfo = BaseUser & {
   followsYou?: boolean;
   youAreFollowing?: boolean;
+  iBlockedThem?: boolean;
 };
 
 export type RoomUser = {
@@ -114,7 +127,30 @@ export type RoomUser = {
 
 export type CurrentRoom = Room & {
   users: RoomUser[];
-  muteMap: Record<string, boolean>;
-  activeSpeakerMap: Record<string, boolean>;
+  muteMap: BooleanMap;
+  deafMap: BooleanMap;
+  activeSpeakerMap: BooleanMap;
   autoSpeaker: boolean;
 };
+
+export type BooleanMap = Record<UUID, boolean>;
+
+export enum Relationship {
+  self = 0,
+  following = 1,
+  follower = 2,
+  mutual = 3,
+  none = 7
+}
+
+export enum RoomRole {
+  speaker = 8,
+  raised_hand = 16,
+  listener = 32
+}
+
+export enum RoomAuth {
+  owner = 8,
+  mod = 16,
+  user = 32
+}

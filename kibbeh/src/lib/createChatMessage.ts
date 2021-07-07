@@ -1,10 +1,9 @@
 import { BaseUser } from "@dogehouse/kebab";
 import normalizeUrl from "normalize-url";
-import { linkRegex, codeBlockRegex } from "./constants";
+import { linkRegex, codeBlockRegex, mentionRegex } from "./constants";
 
 export const createChatMessage = (
   message: string,
-  mentions: BaseUser[],
   roomUsers: BaseUser[] = []
 ) => {
   const tokens = ([] as unknown) as [
@@ -19,21 +18,29 @@ export const createChatMessage = (
   const testAndPushToken = (item: string) => {
     const isLink = linkRegex.test(item);
     const withoutAt = item.replace(/@|#/g, "");
-    const isMention = mentions.find((m) => withoutAt === m.username);
+    const isMention =
+      roomUsers.find((m) => withoutAt === m.username) &&
+      mentionRegex.test(item);
+
     // whisperedTo users list
-    if (!isMention || item.indexOf("#@") !== 0) {
+    if (isMention && item.startsWith("#@")) {
       whisperedToUsernames.push(withoutAt);
     }
 
-    if (isLink || isMention) {
+    if (isLink) {
       tokens.push({
-        t: isLink ? "link" : "mention",
-        v: isMention ? withoutAt : normalizeUrl(item),
+        t: "link",
+        v: normalizeUrl(item),
+      });
+    } else if (isMention) {
+      tokens.push({
+        t: "mention",
+        v: withoutAt,
       });
     } else if (item.startsWith(":") && item.endsWith(":") && item.length > 2) {
       tokens.push({
         t: "emote",
-        v: item.slice(1, item.length - 1),
+        v: item.slice(1, item.length - 1).toLowerCase(),
       });
     } else {
       tokens.push({
@@ -79,9 +86,7 @@ export const createChatMessage = (
       }
     });
   } else {
-    message.split(" ").forEach((item) => {
-      testAndPushToken(item);
-    });
+    message.split(" ").forEach((item) => testAndPushToken(item));
   }
 
   return {

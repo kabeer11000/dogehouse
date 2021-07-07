@@ -7,8 +7,8 @@ exports[`UserAvatar SingleUser should match snapshot 1`] = `
   style="width: 80px; height: 80px;"
 >
   <img
-    alt="avatar"
-    class="rounded-full w-full h-full"
+    alt="your-avatar"
+    class="rounded-full w-full h-full object-cover "
     src=""
   />
 </div>

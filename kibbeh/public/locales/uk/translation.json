@@ -1,5 +1,5 @@
 {
-  "_comment": "if you change this file, do: npm run i18",
+  "_comment": "if you change this file, do: yarn i18",
   "common": {
     "loadMore": "завантажити ще",
     "loading": "завантажується",
@@ -16,12 +16,17 @@
     "copied": "Скопійовано",
     "formattedIntlDate": "{{date, intlDate}}",
     "formattedIntlTime": "{{time, intlTime}}",
-    "requestPermissions": "Please note running DogeHouse without accessibility permissions may cause unwanted errors"
+    "requestPermissions": "Please note running DogeHouse without accessibility permissions may cause unwanted errors",
+    "copy": "Copy",
+    "error": "Error"
   },
   "header": {
     "_comment": "Main Header UI Internationalization Strings",
     "title": "DogeHouse",
-    "mutedTitle": "Без звуку | DogeHouse"
+    "mutedTitle": "Без звуку | DogeHouse",
+    "deafenedTitle": "Deafened | DogeHouse",
+    "dashboard": "Інформаційна панель",
+    "connectionTaken": "З'єднання встановлено"
   },
   "footer": {
     "_comment": "Main Footer UI Internationalization Strings",
@@ -31,14 +36,36 @@
   },
   "pages": {
     "_comment": "Respective Page UI Internationalization Strings",
-    "banUser": { "ban": "заблокувати" },
+    "admin": {
+      "ban": "заблокувати",
+      "userStaffandContrib": "User Staff & Contributions",
+      "staff": "Staff: ",
+      "contributions": "Contributions",
+      "username": "Username",
+      "usrStaff": "User Staff",
+      "usrContributions": "User Contributions",
+      "reason": "reason",
+      "usernamePlaceholder": "username to perform actions on"
+    },
     "followingOnlineList": {
       "listHeader": "Список користувачів, які не перебувають у приватній кімнаті і за якими ви стежите",
       "currentRoom": "зараз у:",
-      "startPrivateRoom": "почніть з ними приватну кімнату"
+      "startPrivateRoom": "почніть з ними приватну кімнату",
+      "title": "People"
     },
-    "followList": { "followHim": "follow", "followingHim": "following" },
-    "home": { "createRoom": "Створити Кімнату", "refresh": "Оновити" },
+    "followList": {
+      "followHim": "відстежувати",
+      "followingHim": "відстежуєте",
+      "title": "People",
+      "followingNone": "Not following anyone",
+      "noFollowers": "No followers"
+    },
+    "home": {
+      "createRoom": "Створити кімнату",
+      "refresh": "Оновити",
+      "editRoom": "Редагувати кімнату",
+      "desktopAlert": "Завантажте додаток DogeHouse сьогодні!"
+    },
     "inviteList": {
       "roomGone": "кімнати вже немає, повернутися",
       "shareRoomLink": "поділитися посиланням на кімнату",
@@ -55,7 +82,8 @@
       "featureText_6": "Працює на Doge",
       "loginGithub": "увійти з GitHub",
       "loginTwitter": "увійти з Twitter",
-      "createTestUser": "створити тестового користувача"
+      "createTestUser": "створити тестового користувача",
+      "loginDiscord": "увійти з Discord"
     },
     "myProfile": {
       "logout": "вийти",
@@ -63,43 +91,92 @@
       "voiceSettings": "перейти до голосових налаштувань",
       "soundSettings": "перейти до звукових налаштувань",
       "deleteAccount": "видалити аккаунт",
-      "overlaySettings": "go to overlay settings"
+      "overlaySettings": "перейти до налаштувань накладення",
+      "couldNotFindUser": "Вибачте, ми не змогли знайти даного користувача",
+      "privacySettings": "Privacy settings"
     },
     "notFound": {
       "whoopsError": "Упс! Ця сторінка загубилася в розмові.",
       "goHomeMessage": "Не хвилюйтеся. Ви зможете",
-      "goHomeLinkText": "додому"
+      "goHomeLinkText": "повернутися додому"
     },
     "room": {
       "speakers": "Доповідачі",
       "requestingToSpeak": "Запитую дозвіл говорити",
       "listeners": "Слухачі",
       "allowAll": "Дозволити все",
-      "allowAllConfirm": "Are you sure? This will allow all {{count}} requesting users to speak"
+      "allowAllConfirm": "Ви впевнені? Це дозволить усім {{count}} запитуючим користувачам розмовляти"
     },
     "searchUser": { "search": "шукати..." },
-    "soundEffectSettings": { "header": "Звуки" },
+    "soundEffectSettings": {
+      "header": "Звуки",
+      "title": "Налаштування звуку",
+      "playSound": "Play Sound"
+    },
     "viewUser": {
       "editProfile": "редагувати профіль",
       "followsYou": "підписані на вас",
       "followers": "підписники",
       "following": "ви підписані",
       "followHim": "підписатися",
-      "followingHim": "following",
-      "copyProfileUrl": "copy profile url",
-      "urlCopied": "URL copied to clipboard",
-      "unfollow": "Unfollow"
+      "followingHim": "відстежується",
+      "copyProfileUrl": "скопіювати посилання на профіль",
+      "urlCopied": "Посилання скопійовано",
+      "unfollow": "Відписатися",
+      "about": "About",
+      "bot": "Бот",
+      "profileTabs": {
+        "about": "About",
+        "rooms": "Rooms",
+        "scheduled": "Scheduled",
+        "recorded": "Recorded",
+        "clips": "Clips",
+        "admin": "Admin"
+      },
+      "block": "Block",
+      "unblock": "Unblock",
+      "sendDM": "Send DM",
+      "aboutSuffix": "",
+      "errors": {
+        "blocked": "This user has blocked you.",
+        "default": "Whoops! We couldn't load this user."
+      }
     },
     "voiceSettings": {
       "header": "Голосові налаштування",
       "mic": "мікрофон:",
       "permissionError": "мікрофонів не знайдено, ви або немаєте їх увімкнутими, або не дали дозволу цьому веб-сайту.",
       "refresh": "оновити список мікрофонів",
-      "volume": "гучність:"
+      "volume": "гучність:",
+      "title": "Voice Settings"
     },
     "overlaySettings": {
-      "input": { "errorMsg": "Invalid app title", "label": "Enter App Title" },
-      "header": "Overlay Settings"
+      "input": {
+        "errorMsg": "Недійсне ім'я додатку",
+        "label": "Введіть назву додатку"
+      },
+      "header": "Налаштування накладення"
+    },
+    "download": {
+      "starting": "Початок завантаження...",
+      "failed": "Не вдалося виконати автоматичне завантаження, спробуйте ще раз пізніше",
+      "visit_gh": "Відвідайте Github Releases",
+      "prompt": "Натисніть на кнопку нижче, щоб розпочати завантаження",
+      "download_now": "Завантажити зараз",
+      "download_for": "Download for %platform% (%ext%)"
+    },
+    "privacySettings": {
+      "title": "Privacy Settings",
+      "header": "Privacy Settings",
+      "whispers": { "label": "Whispers", "on": "On", "off": "Off" }
+    },
+    "botEdit": {
+      "yourBots": "Your Bots",
+      "bots": "Bots",
+      "title": "Bot Information",
+      "apiKey": "ApiKey",
+      "regenerate": "Regenerate",
+      "reveal": "Click to reveal ApiKey"
     }
   },
   "components": {
@@ -124,7 +201,10 @@
       "settings": "Налаштування",
       "speaker": "Доповідач",
       "listener": "Слухач",
-      "chat": "Чат"
+      "chat": "Чат",
+      "toggleDeafMicBtn": "Toggle Deafen",
+      "deafen": "Deafen",
+      "undeafen": "Undeafen"
     },
     "deviceNotSupported": {
       "notSupported": "Ваш пристрій не підтримується. Ви можете створити",
@@ -137,7 +217,7 @@
     },
     "micPermissionBanner": {
       "permissionDenied": "У доступі до мікрофона відмовлено (можливо, вам доведеться зайти в налаштування браузера та перезавантажити сторінку)",
-      "dismiss": "зневажити",
+      "dismiss": "відхилити",
       "tryAgain": "спробувати ще раз"
     },
     "keyboardShortcuts": {
@@ -145,25 +225,24 @@
       "listening": "слухає",
       "toggleMuteKeybind": "Перемикнути прив'язку клавіши",
       "togglePushToTalkKeybind": "Перемикнути режим рації",
-      "toggleOverlayKeybind": "toggle overlay keybind"
+      "toggleOverlayKeybind": "toggle overlay keybind",
+      "toggleDeafKeybind": "Toggle deafen keybind"
     },
-    "userVolumeSlider": {
-      "noAudioMessзагальнодоступноюage": "з якихось причин немає споживача аудіо",
-      "noAudioMessage": "no audio consumer for some reason"
-    },
+    "userVolumeSlider": { "noAudioMessage": "немає аудіозв'язку" },
     "addToCalendar": { "add": "Додати до календаря" },
     "wsKilled": {
-      "description": "Вебсокет був зрушиний сервером. Зазвичай це відбувається, коли ви відкриваєте веб-сайт в іншій вкладці.",
+      "description": "Вебсокет був видалений сервером. Зазвичай це відбувається, коли ви відкриваєте веб-сайт в іншій вкладці.",
       "reconnect": "переєднатися"
     },
     "modals": {
       "createRoomModal": {
-        "public": "загальнодоступна",
+        "public": "публічна",
         "private": "приватна",
         "roomName": "назва кімнати",
         "roomDescription": "опис кімнати",
         "descriptionError": "має містити до 500 символів",
-        "nameError": "має містити від 2 до 60 символів"
+        "nameError": "має містити від 2 до 60 символів",
+        "subtitle": "Заповніть наступні поля для того, щоб розпочати нову кімнату"
       },
       "invitedToJoinRoomModal": {
         "newRoomCreated": "Створено нову кімнату",
@@ -181,7 +260,8 @@
         "usernameError": "має містити від 4 до 15 символів і бути лише буквено-цифровим та підкреслення",
         "usernameLabel": "Ім'я користувача",
         "bioError": "має містити до 160 символів",
-        "bioLabel": "Біографія"
+        "bioLabel": "Біографія",
+        "bannerUrlLabel": "URL-адреса банера Twitter"
       },
       "profileModal": {
         "blockUserConfirm": "Ви впевнені, що хочете заблокувати цього користувача в будь-якій кімнаті, яку ви коли-небудь створювали?",
@@ -194,13 +274,69 @@
         "banFromRoom": "заблокувати в цій кімнаті",
         "goBackToListener": "повернутися у статус слухача",
         "deleteMessage": "видалити це повідомлення",
-        "makeRoomCreator": "зробити адміном кімнати"
+        "makeRoomCreator": "зробити адміном кімнати",
+        "unBanFromChat": "Розбанити у цьому чаті",
+        "banIPFromRoom": "Ban IP from Room"
       },
       "roomSettingsModal": {
         "requirePermission": "запитувати дозвіл говорити",
         "makePublic": "зробити кімнату загальнодоступною",
-        "makePrivate": "зробити кімнату приватною"
+        "makePrivate": "зробити кімнату приватною",
+        "renamePublic": "Встановити ім'я публічної кімнати",
+        "renamePrivate": "Встановити ім'я приватної кімнати",
+        "chatDisabled": "disable chat",
+        "chatCooldown": "Chat Cooldown (milliseconds)",
+        "chat": {
+          "label": "Chat",
+          "enabled": "Enabled",
+          "disabled": "Disabled",
+          "followerOnly": "Follower Only"
+        }
+      },
+      "createBotModal": {
+        "usernameTaken": "Username is taken",
+        "subtitle": "Please fill the details below to create your bot",
+        "title": "Create Bot"
       }
+    },
+    "followingOnline": {
+      "people": "Люди",
+      "online": "ОНЛАЙН",
+      "noOnline": "На даний момент у вас 0 друзів онлайн",
+      "showMore": "Показати більше"
+    },
+    "upcomingRoomsCard": {
+      "upcomingRooms": "Заплановані кімнати",
+      "exploreMoreRooms": "Знайти більше кімнат"
+    },
+    "search": {
+      "placeholder": "Знайти кімнати, користувачів або категорії",
+      "placeholderShort": "Пошук"
+    },
+    "settingsDropdown": {
+      "profile": "Профіль",
+      "language": "Мова",
+      "reportABug": "Повідомити про помилку",
+      "useOldVersion": "Використовувати стару версію",
+      "logOut": {
+        "button": "Вийти",
+        "modalSubtitle": "Ви впевнені що хочете вийти?"
+      },
+      "debugAudio": {
+        "debugAudio": "Налагодження звуку",
+        "stopDebugger": "Зупинити налагодження"
+      },
+      "downloadApp": "Download App",
+      "developer": "Developer Settings"
+    },
+    "userBadges": {
+      "dhStaff": "DogeHouse Staff",
+      "dhContributor": "DogeHouse Contributor"
+    },
+    "messagesDropdown": {
+      "title": "Messages",
+      "showMore": "Show More",
+      "noMessages": "No new messages"
     }
   },
   "modules": {
@@ -217,6 +353,11 @@
         "roomName": "назва кімнати",
         "minLength": "має містити від 2 символів",
         "roomDescription": "Опис"
+      },
+      "tommorow": "Завтра",
+      "today": "Cьогодні",
+      "deleteModal": {
+        "areYouSure": "Ви дійсно бажаєте видалити цю заплановану кімнату?"
       }
     },
     "roomChat": {
@@ -230,19 +371,26 @@
       "sendMessage": "Надіслати Повідомлення",
       "whisper": "Шепотіти",
       "welcomeMessage": "Ласкаво просимо до чату!",
-      "roomDescription": "Опис кімнати"
+      "roomDescription": "Опис кімнати",
+      "disabled": "room chat has been disabled",
+      "messageDeletion": {
+        "message": "message",
+        "retracted": "retracted",
+        "deleted": "deleted"
+      }
     },
     "roomStatus": {
-      "fuelingRocket": "Fueling rocket",
-      "takingOff": "Taking off",
-      "inSpace": "In space",
-      "approachingMoon": "Approaching moon",
-      "lunarDoge": "Lunar doge",
-      "approachingSun": "Approaching sun",
-      "solarDoge": "Solar doge",
-      "approachingGalaxy": "Approaching galaxy",
-      "galacticDoge": "Galactic Doge",
-      "spottedLife": "Planet with life spotted"
-    }
+      "fuelingRocket": "Заправляємо ракету",
+      "takingOff": "Злітаємо",
+      "inSpace": "У космосі",
+      "approachingMoon": "Досягаємо луни",
+      "lunarDoge": "Місячний doge",
+      "approachingSun": "Досягаємо сонця",
+      "solarDoge": "Сонячний doge",
+      "approachingGalaxy": "Досягаємо галактики",
+      "galacticDoge": "Галактичний Doge",
+      "spottedLife": "Помічена планета з життям"
+    },
+    "feed": { "yourFeed": "Ваша Стрічка" }
   }
 }

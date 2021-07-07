@@ -15,15 +15,17 @@ export const InputField: React.FC<
     altErrorMsg?: string;
     rows?: number;
   }
-> = ({ label, textarea, errorMsg, ref: _, ...props }) => {
+> = ({ label, textarea, errorMsg, ref: _, className, ...props }) => {
   const [field, meta] = useField(props);
 
   return (
-    <div className={`h-full w-full block`}>
-      {label ? <div className={`mb-2`}>{label}</div> : null}
+    <div className={`h-full w-full block ${className}`}>
+      {label ? (
+        <div className={`flex mb-2 text-primary-300`}>{label}</div>
+      ) : null}
       <Input error={meta.error} textarea={textarea} {...field} {...props} />
       {meta.error && meta.touched ? (
-        <div className={`mt-1`}>
+        <div className={`flex mt-1`}>
           <InputErrorMsg>{errorMsg || meta.error}</InputErrorMsg>
         </div>
       ) : null}

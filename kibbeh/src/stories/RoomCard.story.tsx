@@ -17,8 +17,9 @@ export const Live: Story<RoomCardProps> = ({
   scheduledFor = new Date(Date.now() - 100),
   tags = [<Icon key={0} />, "#interview", "#GME"],
 }) => (
-  <div style={{ width: 640 }}>
+  <div className="flex" style={{ width: 640 }}>
     <RoomCard
+      avatars={[]}
       title={title}
       subtitle={subtitle}
       listeners={listeners}
@@ -37,8 +38,9 @@ export const StartsIn2Secs: Story<RoomCardProps> = ({
   scheduledFor = addSeconds(Date.now(), 2),
   tags = [<Icon key={0} />, "#interview", "#GME"],
 }) => (
-  <div style={{ width: 640 }}>
+  <div className="flex" style={{ width: 640 }}>
     <RoomCard
+      avatars={[]}
       title={title}
       subtitle={subtitle}
       listeners={listeners}
@@ -57,9 +59,10 @@ export const StartsIn2Hours: Story<RoomCardProps> = ({
   scheduledFor = addHours(Date.now(), 2),
   tags = [<Icon key={0} />, "#tech", "#CI/CD", "webinar"],
 }) => (
-  <div style={{ width: 640 }}>
+  <div className="flex" style={{ width: 640 }}>
     <RoomCard
       title={title}
+      avatars={[]}
       subtitle={subtitle}
       listeners={listeners}
       scheduledFor={scheduledFor}
@@ -77,8 +80,9 @@ export const StartsIn2Days: Story<RoomCardProps> = ({
   scheduledFor = addDays(Date.now(), 2),
   tags = [<Icon key={0} />, "#tech", "#CI/CD", "webinar"],
 }) => (
-  <div style={{ width: 640 }}>
+  <div className="flex" style={{ width: 640 }}>
     <RoomCard
+      avatars={[]}
       title={title}
       subtitle={subtitle}
       listeners={listeners}

@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useGlobalVolumeStore } from "../../../global-stores/useGlobalVolumeStore";
 import { Button } from "../../../ui/Button";
 import { useConsumerStore } from "../stores/useConsumerStore";
-
+import { useDeafStore } from "../../../global-stores/useDeafStore";
 interface AudioRenderProps {}
 
 const MyAudio = ({
   volume,
   onRef,
-  debug,
   ...props
 }: React.DetailedHTMLProps<
   React.AudioHTMLAttributes<HTMLAudioElement>,
@@ -15,7 +15,6 @@ const MyAudio = ({
 > & {
   onRef: (a: HTMLAudioElement) => void;
   volume: number;
-  debug?: boolean;
 }) => {
   const myRef = useRef<HTMLAudioElement>(null);
   useEffect(() => {
@@ -23,29 +22,9 @@ const MyAudio = ({
       myRef.current.volume = volume;
     }
   }, [volume]);
-
   return (
     <audio
       ref={(r) => {
-        if (debug && r) {
-          console.log("audio-debug", {
-            currentTime: r.currentTime,
-            paused: r.paused,
-            ended: r.ended,
-            readyState: r.readyState,
-            duration: r.duration,
-            volume: r.volume,
-          });
-          if (r.dataset.debugPlay !== "true") {
-            r.dataset.debugPlay = "true";
-            r.play()
-              .then(() => console.log("debug-play-then"))
-              .catch((err) => {
-                console.log("debug-play-catch", err);
-              });
-          }
-        }
-        // @todo
         if (r && !myRef.current) {
           (myRef as any).current = r;
           onRef(r);
@@ -59,20 +38,20 @@ const MyAudio = ({
 export const AudioRender: React.FC<AudioRenderProps> = () => {
   const notAllowedErrorCountRef = useRef(0);
   const [showAutoPlayModal, setShowAutoPlayModal] = useState(false);
-  // const [globalVolume] = useAtom(volumeAtom);
-  const globalVolume = 100;
-  const { consumerMap } = useConsumerStore();
+  const { volume: globalVolume } = useGlobalVolumeStore();
+  const { consumerMap, setAudioRef } = useConsumerStore();
   const audioRefs = useRef<[string, HTMLAudioElement][]>([]);
+  const { deafened } = useDeafStore();
 
   return (
     <>
       <div
-        className={`absolute w-full h-full flex z-50 bg-simple-gray-80 ${
+        className={`absolute top-0 w-full h-full flex z-50 bg-primary-900 ${
           showAutoPlayModal ? "" : "hidden"
         }`}
       >
-        <div className={`p-8 rounded m-auto bg-simple-gray-3c`}>
-          <div className={`text-center mb-4`}>
+        <div className={`flex p-8 rounded m-auto bg-primary-700 flex-col`}>
+          <div className={`flex text-center mb-4 text-primary-100`}>
             Browsers require user interaction before they will play audio. Just
             click okay to continue.
           </div>
@@ -88,16 +67,18 @@ export const AudioRender: React.FC<AudioRenderProps> = () => {
           >
             okay
             {Object.keys(consumerMap).map((k) => {
-              const { consumer, volume: userVolume, debug } = consumerMap[k];
+              const { consumer, volume: userVolume } = consumerMap[k];
               return (
                 <MyAudio
-                  volume={(userVolume / 200) * (globalVolume / 100)}
+                  volume={
+                    deafened ? 0 : (userVolume / 200) * (globalVolume / 100)
+                  }
                   // autoPlay
                   playsInline
                   controls={false}
                   key={consumer.id}
-                  debug={debug}
                   onRef={(a) => {
+                    setAudioRef(k, a);
                     audioRefs.current.push([k, a]);
                     a.srcObject = new MediaStream([consumer.track]);
                     // prevent modal from showing up more than once in a single render cycle
